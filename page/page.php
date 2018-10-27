@@ -1,0 +1,99 @@
+<?php
+
+if (@$_GET['view'] == '' || @$_GET['view'] == 'home')
+{
+    include 'view/home.php';
+}
+elseif (@$_GET['view'] == 'home-admin')
+{
+    include 'view/admin/home.php';
+}
+elseif (@$_GET['view'] == 'login-admin')
+{
+    include 'view/login.php';
+}
+elseif (@$_GET['view'] == 'input-anggota')
+{
+    include 'view/admin/input-anggota.php';
+}
+elseif (@$_GET['view'] == 'data-anggota')
+{
+    include 'view/admin/data-anggota.php';
+}
+elseif (@$_GET['view'] == 'edit-anggota')
+{
+    include 'view/admin/edit-anggota.php';
+}
+elseif (@$_GET['view'] == 'input-petugas')
+{
+    include 'view/admin/input-petugas.php';
+}
+elseif (@$_GET['view'] == 'data-petugas')
+{
+    include 'view/admin/data-petugas.php';
+}
+elseif (@$_GET['view'] == 'edit-petugas')
+{
+    include 'view/admin/edit-petugas.php';
+}
+elseif (@$_GET['view'] == 'input-buku')
+{
+    include 'view/admin/input-buku.php';
+}
+elseif (@$_GET['view'] == 'data-buku')
+{
+    include 'view/admin/data-buku.php';
+}
+elseif (@$_GET['view'] == 'edit-buku')
+{
+    include 'view/admin/edit-buku.php';
+}
+elseif (@$_GET['view'] == 'input-detail-buku')
+{
+    include 'view/admin/input-detail-buku.php';
+}
+elseif (@$_GET['view'] == 'detail-buku')
+{
+    include 'view/admin/data-detail-buku.php';
+}
+elseif (@$_GET['view'] == 'input-Klasifikasi-buku')
+{
+    include 'view/admin/input-klasifikasi-buku.php';
+}
+elseif (@$_GET['view'] == 'data-Klasifikasi-buku')
+{
+    include 'view/admin/data-klasifikasi-buku.php';
+}
+elseif (@$_GET['view'] == 'edit-Klasifikasi-buku')
+{
+    include 'view/admin/edit-klasifikasi-buku.php';
+}
+elseif (@$_GET['view'] == 'peminjaman1')
+{
+    include 'view/admin/transaksi/peminjaman1.php';
+}
+elseif (@$_GET['view'] == 'peminjaman2')
+{
+    include 'view/admin/transaksi/peminjaman2.php';
+}
+elseif (@$_GET['view'] == 'daftar-peminjam')
+{
+    include 'view/admin/transaksi/daftar-peminjam.php';
+}
+elseif (@$_GET['view'] == 'pengembalian')
+{
+    include 'view/admin/transaksi/pengembalian.php';
+}
+elseif (@$_GET['view'] == 'tambah-admin')
+{
+    include 'view/admin/setting/tambah-admin.php';
+}
+elseif (@$_GET['view'] == 'edit-pass')
+{
+    include 'view/admin/setting/rubah-password.php';
+}
+else
+{
+  include 'view/404.php';
+
+}
