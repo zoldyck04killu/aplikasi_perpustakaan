@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Oct 26, 2018 at 04:33 PM
+-- Generation Time: Nov 08, 2018 at 05:47 AM
 -- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.10
+-- PHP Version: 7.2.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -31,9 +31,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `admin` (
   `id_admin` int(5) NOT NULL,
   `admin` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `passadmin` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `passadmin` varchar(250) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_login` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `admin`
+--
+
+INSERT INTO `admin` (`id_admin`, `admin`, `passadmin`, `tgl_login`) VALUES
+(2, 'Admin', '$2y$10$Ip3fFqK.j5zDPkTXe9hzveqxVt..JyZla3jmj9pRbS8FU.woUx4jm', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -122,9 +129,17 @@ CREATE TABLE `pengunjung` (
   `status` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nrp` int(8) NOT NULL,
   `nama` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `jurusan` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jurusan` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jekel` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_entry` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `pengunjung`
+--
+
+INSERT INTO `pengunjung` (`id_pengunjung`, `status`, `nrp`, `nama`, `jurusan`, `jekel`, `tgl_entry`) VALUES
+(1, '1', 12313212, 'sudo', 'Teknik Inf', 'pria', '2018-11-08 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -224,7 +239,7 @@ ALTER TABLE `pinjaman`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `anggota`
@@ -248,7 +263,7 @@ ALTER TABLE `pengembalian`
 -- AUTO_INCREMENT for table `pengunjung`
 --
 ALTER TABLE `pengunjung`
-  MODIFY `id_pengunjung` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pengunjung` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pinjaman`

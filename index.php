@@ -1,7 +1,12 @@
 <?php
 require_once 'config/config.php';
 require_once 'config/connection.php';
+include('models/pengunjung.php');
+include('models/admin.php');
 $obj = new Connection($host, $user, $pass, $db);
+$objPengunjung = new Pengunjung($obj);
+$objAdmin = new Admin($obj);
+
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -42,76 +47,82 @@ $obj = new Connection($host, $user, $pass, $db);
               <a class="nav-link" href="#">Cari Buku</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="?view=login-admin">Login Admin</a>
+              <?php if (isset($_SESSION['user'])) { ?>
+                <a class="nav-link" href="?view=logout-admin">Log Out</a>
+              <?php } else { ?>
+                <a class="nav-link" href="?view=login-admin">Login Admin</a>
+              <?php } ?>
             </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Data Anggota
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="?view=input-anggota">Input Anggota</a>
-                <a class="dropdown-item" href="?view=data-anggota">Data Anggota</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Data Petugas
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="?view=input-petugas">Input Petugas</a>
-                <a class="dropdown-item" href="?view=data-petugas">Data Petugas</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Data Buku
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="?view=input-buku">Input Buku</a>
-                <a class="dropdown-item" href="?view=data-buku">Data Buku</a>
-                <a class="dropdown-item" href="?view=input-detail-buku">Input Detail Buku</a>
-                <a class="dropdown-item" href="?view=detail-buku">Detail Buku</a>
-                <a class="dropdown-item" href="?view=input-Klasifikasi-buku">Input Klasifikasi Buku</a>
-                <a class="dropdown-item" href="?view=data-Klasifikasi-buku">Klasifikasi Buku</a>
+            <?php if (isset($_SESSION['user'])) { ?>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Data Anggota
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="?view=input-anggota">Input Anggota</a>
+                    <a class="dropdown-item" href="?view=data-anggota">Data Anggota</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Data Petugas
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="?view=input-petugas">Input Petugas</a>
+                    <a class="dropdown-item" href="?view=data-petugas">Data Petugas</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Data Buku
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="?view=input-buku">Input Buku</a>
+                    <a class="dropdown-item" href="?view=data-buku">Data Buku</a>
+                    <a class="dropdown-item" href="?view=input-detail-buku">Input Detail Buku</a>
+                    <a class="dropdown-item" href="?view=detail-buku">Detail Buku</a>
+                    <a class="dropdown-item" href="?view=input-Klasifikasi-buku">Input Klasifikasi Buku</a>
+                    <a class="dropdown-item" href="?view=data-Klasifikasi-buku">Klasifikasi Buku</a>
 
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Transaksi
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="?view=peminjaman1">Peminjaman</a>
-                <a class="dropdown-item" href="?view=daftar-peminjam">Pengembalian</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Laporan
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Laporan Data Pengunjung</a>
-                <a class="dropdown-item" href="#">Laporan Grafik Pengunjung</a>
-                <a class="dropdown-item" href="#">Laporan Data Anggota</a>
-                <a class="dropdown-item" href="#">Laporan Data Petugas</a>
-                <a class="dropdown-item" href="#">Laporan Data Buku</a>
-                <a class="dropdown-item" href="#">Laporan Detil Buku</a>
-                <a class="dropdown-item" href="#">Laporan Klasifikasi Buku</a>
-                <a class="dropdown-item" href="#">Laporan Peminjaman</a>
-              </div>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Konfigurasi
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="?view=tambah-admin">Tambah Admin</a>
-                <a class="dropdown-item" href="?view=edit-pass">Ubah Password</a>
-                <a class="dropdown-item" href="#">LogOut</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Transaksi
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="?view=peminjaman1">Peminjaman</a>
+                    <a class="dropdown-item" href="?view=daftar-peminjam">Pengembalian</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Laporan
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Laporan Data Pengunjung</a>
+                    <a class="dropdown-item" href="#">Laporan Grafik Pengunjung</a>
+                    <a class="dropdown-item" href="#">Laporan Data Anggota</a>
+                    <a class="dropdown-item" href="#">Laporan Data Petugas</a>
+                    <a class="dropdown-item" href="#">Laporan Data Buku</a>
+                    <a class="dropdown-item" href="#">Laporan Detil Buku</a>
+                    <a class="dropdown-item" href="#">Laporan Klasifikasi Buku</a>
+                    <a class="dropdown-item" href="#">Laporan Peminjaman</a>
+                  </div>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Konfigurasi
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="?view=tambah-admin">Tambah Admin</a>
+                    <a class="dropdown-item" href="?view=edit-pass">Ubah Password</a>
+                    <a class="dropdown-item" href="#">LogOut</a>
 
-              </div>
-            </li>
-
+                  </div>
+                </li>
+            <?php } ?>
+            
           </ul>
         </div>
       </nav>

@@ -1,0 +1,1 @@
+pada table pengunjung tambah field jekel

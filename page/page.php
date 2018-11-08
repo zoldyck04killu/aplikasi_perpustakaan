@@ -12,6 +12,13 @@ elseif (@$_GET['view'] == 'login-admin')
 {
     include 'view/login.php';
 }
+elseif (@$_GET['view'] == 'logout-admin')
+{
+    $objAdmin->logout();
+    echo '<script>
+    window.location="?view=login-admin";
+     </script>';
+}
 elseif (@$_GET['view'] == 'input-anggota')
 {
     include 'view/admin/input-anggota.php';
