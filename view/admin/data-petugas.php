@@ -18,16 +18,24 @@
         <th>Nama</th>
         <th>Jabatan</th>
         <th>Alamat</th>
+        <th>jenis Kelamin</th>
         <th>Opsi</th>
       </tr>
     </thead>
+    <?php
+    $data = $objAdmin->showPetugas();
+    $no = 1;
+    while ($a = $data->fetch_object()) {
+    ?>
     <tbody>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><?= $no; ?></td>
+        <td><?= $a->nip; ?></td>
+        <td><?= $a->nama_petugas; ?></td>
+        <td><?= $a->jabatan; ?></td>
+        <td><?= $a->alamat; ?></td>
+        <td><?= $a->jenkel; ?></td>
+
         <td>
           <a href="?view=edit-petugas" class="btn btn-sm btn-warning">Edit</a>
           <a href="" class="btn btn-sm btn-danger">Hapus</a>
@@ -35,5 +43,9 @@
         </td>
       </tr>
     </tbody>
+    <?php
+    $no++;
+    }
+    ?>
     </table>
 </div>

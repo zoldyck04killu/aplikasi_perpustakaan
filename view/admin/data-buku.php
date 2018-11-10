@@ -19,23 +19,28 @@
         <th>Pengarang</th>
         <th>Penerbit</th>
         <th>Tahun Terbit</th>
-        <th>ISBN</th>
+        <th>LSBN</th>
         <th>Jumlah Buku</th>
         <th>Klasifikasi</th>
         <th>Opsi</th>
       </tr>
     </thead>
+    <?php
+    $data = $objAdmin->showBuku();
+    $no = 1;
+    while ($a = $data->fetch_object()) {
+    ?>
     <tbody>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><?= $no; ?></td>
+        <td><?= $a->kd_buku; ?></td>
+        <td><?= $a->jdl_buku; ?></td>
+        <td><?= $a->pengarang; ?></td>
+        <td><?= $a->penerbit; ?></td>
+        <td><?= $a->thn_terbit; ?></td>
+        <td><?= $a->lsbn; ?></td>
+        <td><?= $a->jml_buku; ?></td>
+        <td><?= $a->klasifikasi; ?></td>
         <td>
           <a href="" class="btn btn-sm btn-success">View</a>
           <a href="?view=edit-buku" class="btn btn-sm btn-warning">Edit</a>
@@ -43,5 +48,9 @@
         </td>
       </tr>
     </tbody>
+    <?php
+    $no++;
+    }
+    ?>
     </table>
 </div>

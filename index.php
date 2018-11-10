@@ -23,6 +23,9 @@ $objAdmin = new Admin($obj);
     <script src="<?= base_url()?>assets/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/DataTables/datatables.min.js"></script>
 
+    <script src="<?php echo base_url(); ?>assets/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <!-- Optional: include a polyfill for ES6 Promises for IE11 and Android browser -->
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
   </head>
   <body>
     <!-- Image and text -->
@@ -122,7 +125,7 @@ $objAdmin = new Admin($obj);
                   </div>
                 </li>
             <?php } ?>
-            
+
           </ul>
         </div>
       </nav>

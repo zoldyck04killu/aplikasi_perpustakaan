@@ -14,7 +14,6 @@
       <thead>
       <tr>
         <th>No</th>
-        <th>Id Anggota</th>
         <th>Nama</th>
         <th>Jurusan</th>
         <th>Jenis Kelamin</th>
@@ -24,16 +23,20 @@
         <th>Opsi</th>
       </tr>
     </thead>
+    <?php
+    $data = $objAdmin->showAnggota();
+    $no = 1;
+    while ($a = $data->fetch_object()) {
+    ?>
     <tbody>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <td><?= $no ?></td>
+        <td><?= $a->nama_anggota; ?></td>
+        <td><?= $a->jurusan; ?></td>
+        <td><?= $a->jenkel; ?></td>
+        <td><?= $a->tmp_lahir; ?></td>
+        <td><?= $a->tgl_lahir; ?></td>
+        <td><?= $a->status; ?></td>
         <td>
           <a href="?view=edit-anggota" class="btn btn-sm btn-warning">Edit</a>
           <a href="" class="btn btn-sm btn-danger">Hapus</a>
@@ -41,5 +44,9 @@
         </td>
       </tr>
     </tbody>
+    <?php
+    $no++;
+    }
+    ?>
     </table>
 </div>

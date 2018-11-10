@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 08, 2018 at 05:47 AM
+-- Generation Time: Nov 10, 2018 at 08:31 AM
 -- Server version: 10.1.36-MariaDB
 -- PHP Version: 7.2.11
 
@@ -59,6 +59,14 @@ CREATE TABLE `anggota` (
   `tgl_entry` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `anggota`
+--
+
+INSERT INTO `anggota` (`id_anggota`, `nama_anggota`, `jurusan`, `jenkel`, `tmp_lahir`, `tgl_lahir`, `status`, `tgl_entry`) VALUES
+(1, 'akhmad syarif', 'Teknik Inf', 'pria', 'Tabalong', '2018-11-21 00:00:00', '1', '2018-11-08 00:00:00'),
+(2, 'aldi', 'Sistem Inf', 'wanita', 'mahligai', '2018-11-23 00:00:00', '1', '2018-11-08 00:00:00');
+
 -- --------------------------------------------------------
 
 --
@@ -77,6 +85,13 @@ CREATE TABLE `buku` (
   `sinopsis` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `tgl_entry` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `buku`
+--
+
+INSERT INTO `buku` (`kd_buku`, `jdl_buku`, `pengarang`, `penerbit`, `thn_terbit`, `lsbn`, `jml_buku`, `klasifikasi`, `sinopsis`, `tgl_entry`) VALUES
+(123, 'WEB', 'akhmad syarif', 'garuda putih', 2018, 1231, 10, 'buku best seller', 'jadi buku ini membahas tentang pembelajaran pemograman web dari basic hingga bisa membuat aplikasi berbasi web. seperti web profile, blog, dan e-commerce.', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -154,6 +169,13 @@ CREATE TABLE `petugas` (
   `jenkel` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `alamat` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `petugas`
+--
+
+INSERT INTO `petugas` (`nip`, `nama_petugas`, `jabatan`, `jenkel`, `alamat`) VALUES
+(212313, 'sudarsono', 'IT', 'pria', 'jln. Banua Hanyar');
 
 -- --------------------------------------------------------
 
@@ -245,7 +267,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id_anggota` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_anggota` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `detail_buku`
