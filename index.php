@@ -133,4 +133,12 @@ $objAdmin = new Admin($obj);
     <?php include('page/page.php'); ?>
 
   </body>
+
+  <script type="text/javascript">
+      $(document).ready( function () {
+        $('#table').DataTable();
+      } );
+  </script>
+
+
 </html>

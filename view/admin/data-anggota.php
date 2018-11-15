@@ -23,12 +23,12 @@
         <th>Opsi</th>
       </tr>
     </thead>
+    <tbody>
     <?php
     $data = $objAdmin->showAnggota();
     $no = 1;
     while ($a = $data->fetch_object()) {
     ?>
-    <tbody>
       <tr>
         <td><?= $no ?></td>
         <td><?= $a->nama_anggota; ?></td>
@@ -38,9 +38,8 @@
         <td><?= $a->tgl_lahir; ?></td>
         <td><?= $a->status; ?></td>
         <td>
-          <a href="?view=edit-anggota" class="btn btn-sm btn-warning">Edit</a>
-          <a href="" class="btn btn-sm btn-danger">Hapus</a>
-
+          <a href="?view=edit-anggota&id=<?=$a->id_anggota; ?>" class="btn btn-sm btn-warning">Edit</a>
+          <a href="?view=hapus&id=<?=$a->id_anggota; ?>" class="btn btn-sm btn-danger">Hapus</a>
         </td>
       </tr>
     </tbody>

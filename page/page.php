@@ -99,6 +99,46 @@ elseif (@$_GET['view'] == 'edit-pass')
 {
     include 'view/admin/setting/rubah-password.php';
 }
+elseif (@$_GET['view'] == 'hapus')
+{
+    $id = $_GET['id'];
+    $objAdmin->hapus($id);
+    echo '<script>
+    swal({
+        title: "Alert",
+        text: "Data berhasil dihapus",
+        type: "success"
+    }).then(function() {
+        window.location = "?view=data-anggota";
+    });
+  </script>';
+}
+elseif (@$_GET['view'] == 'hapus-petugas') {
+    $id = $_GET['nip'];
+    $objAdmin->hapusPetugas($id);
+    echo '<script>
+    swal({
+        title: "Alert",
+        text: "Data berhasil dihapus",
+        type: "success"
+    }).then(function() {
+        window.location = "?view=data-petugas";
+    });
+  </script>';
+}
+elseif (@$_GET['view'] == 'hapus-buku') {
+  $id = $_GET['kd_buku'];
+  $objAdmin->hapusBuku($id);
+  echo '<script>
+  swal({
+      title: "Alert",
+      text: "Data berhasil dihapus",
+      type: "success"
+  }).then(function() {
+      window.location = "?view=data-buku";
+  });
+</script>';
+}
 else
 {
   include 'view/404.php';

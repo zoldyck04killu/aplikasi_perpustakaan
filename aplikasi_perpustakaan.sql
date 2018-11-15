@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 10, 2018 at 08:31 AM
--- Server version: 10.1.36-MariaDB
--- PHP Version: 7.2.11
+-- Generation Time: Nov 16, 2018 at 12:49 AM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -54,9 +54,9 @@ CREATE TABLE `anggota` (
   `jurusan` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenkel` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `tmp_lahir` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_lahir` datetime NOT NULL,
+  `tgl_lahir` date NOT NULL,
   `status` varchar(15) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_entry` datetime NOT NULL
+  `tgl_entry` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -64,8 +64,8 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`id_anggota`, `nama_anggota`, `jurusan`, `jenkel`, `tmp_lahir`, `tgl_lahir`, `status`, `tgl_entry`) VALUES
-(1, 'akhmad syarif', 'Teknik Inf', 'pria', 'Tabalong', '2018-11-21 00:00:00', '1', '2018-11-08 00:00:00'),
-(2, 'aldi', 'Sistem Inf', 'wanita', 'mahligai', '2018-11-23 00:00:00', '1', '2018-11-08 00:00:00');
+(5, 'Muhammad Aldi Renaldy', 'Teknik Inf', 'pria', 'Banjarmasin', '1996-07-23', '1', '2018-11-16'),
+(6, 'Ahmad Syarif', 'Teknik Inf', 'pria', 'Tabalong', '1010-01-01', '1', '2018-11-15');
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,7 @@ CREATE TABLE `buku` (
   `jml_buku` smallint(15) NOT NULL,
   `klasifikasi` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `sinopsis` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `tgl_entry` datetime NOT NULL
+  `tgl_entry` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -91,7 +91,9 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`kd_buku`, `jdl_buku`, `pengarang`, `penerbit`, `thn_terbit`, `lsbn`, `jml_buku`, `klasifikasi`, `sinopsis`, `tgl_entry`) VALUES
-(123, 'WEB', 'akhmad syarif', 'garuda putih', 2018, 1231, 10, 'buku best seller', 'jadi buku ini membahas tentang pembelajaran pemograman web dari basic hingga bisa membuat aplikasi berbasi web. seperti web profile, blog, dan e-commerce.', '0000-00-00 00:00:00');
+(9, 'oke', 'siap', 'mantap', 2019, 10, 20000, 'oke', 'siap oke matnp', '2018-11-16 00:49:19'),
+(1011111, 'web apps', 'syarif', 'PT.Bekantan Jantat', 2018, 100001, 20, 'oke siap', 'ini adlah buku web apps oke', '2018-11-16 00:46:09'),
+(101010101, 'web untuk pemula', 'aldi', 'PT.Bekantan Jantat', 2018, 10, 20, 'oke', 'buku untuk pemula web apps', '2018-11-16 00:46:29');
 
 -- --------------------------------------------------------
 
@@ -175,7 +177,7 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`nip`, `nama_petugas`, `jabatan`, `jenkel`, `alamat`) VALUES
-(212313, 'sudarsono', 'IT', 'pria', 'jln. Banua Hanyar');
+(14041037, 'Muhammad Aldi Renaldy', 'IT ', 'pria', 'Jalan Mahligai');
 
 -- --------------------------------------------------------
 
@@ -267,7 +269,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `anggota`
 --
 ALTER TABLE `anggota`
-  MODIFY `id_anggota` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_anggota` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `detail_buku`

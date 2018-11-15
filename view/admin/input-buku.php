@@ -76,8 +76,8 @@ if (isset($_POST['saveBuku']))
   $jlh_buku = $obj->conn->real_escape_string($_POST['jlh_buku']);
   $klasifikasi = $obj->conn->real_escape_string($_POST['klasifikasi']);
   $sinopsis = $obj->conn->real_escape_string($_POST['sinopsis']);
-
-  $saveBuku = $objAdmin->saveBuku($kdBuku, $buku, $pengarang, $penerbit, $thn_terbit, $isbn, $jlh_buku, $klasifikasi, $sinopsis);
+  $entry = date("Y-m-d H:i:s");
+  $saveBuku = $objAdmin->saveBuku($kdBuku, $buku, $pengarang, $penerbit, $thn_terbit, $isbn, $jlh_buku, $klasifikasi, $sinopsis, $entry);
   if ($saveBuku) {
       echo "<script>
       swal(

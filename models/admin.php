@@ -85,15 +85,13 @@ class Admin
     return $query;
   }
 
-  function saveBuku($kdBuku, $buku, $pengarang, $penerbit, $thn_terbit, $isbn, $jlh_buku, $klasifikasi, $sinopsis)
+  function saveBuku($kdBuku, $buku, $pengarang, $penerbit, $thn_terbit, $isbn, $jlh_buku, $klasifikasi, $sinopsis, $entry)
   {
     $db = $this->mysqli->conn;
-    date_default_timezone_set("Asia/Kuala_Lumpur");
-    $tgl_Entry = date('Y/m/d');
     $saveBuku = $db->query("INSERT INTO buku
                               (kd_buku, jdl_buku, pengarang, penerbit, thn_terbit, lsbn, jml_buku, klasifikasi, sinopsis, tgl_entry)
                               VALUES
-                              ($kdBuku, '$buku', '$pengarang', '$penerbit', '$thn_terbit', $isbn, '$jlh_buku', '$klasifikasi', '$sinopsis', $tgl_Entry)
+                              ($kdBuku, '$buku', '$pengarang', '$penerbit', '$thn_terbit', $isbn, '$jlh_buku', '$klasifikasi', '$sinopsis', '$entry')
                               ")
                               or die ($db->error);
     if ($saveBuku)
@@ -111,7 +109,68 @@ class Admin
     return $query;
   }
 
-}
+  public function edit($id)
+  {
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT * FROM anggota WHERE id_anggota = '$id' ") or die ($db->error);
+    return $query;
+  }
+
+  public function update($id, $nama, $jurusan, $jekel, $temp_lhr, $tl, $status, $entry)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("UPDATE anggota SET nama_anggota = '$nama', jurusan = '$jurusan', jenkel = '$jekel', tmp_lahir = '$temp_lhr', tgl_lahir = '$tl', status = '$status', tgl_entry = '$entry' WHERE id_anggota = '$id' ") or die ($db->error);
+    return true;
+  }
+
+  public function hapus($id)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("DELETE FROM anggota WHERE id_anggota = '$id' ");
+  }
+
+  public function editPetugas($id)
+  {
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT * FROM petugas WHERE nip = '$id' ") or die ($db->error);
+    return $query;
+  }
+
+  public function updatePetugas($nip, $nama, $jabatan, $jenkel, $alamat)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("UPDATE petugas SET nama_petugas = '$nama', jabatan = '$jabatan', jenkel = '$jenkel', alamat = '$alamat' WHERE nip = '$nip' ") or die ($db->error);
+    return true;
+    //sengaja nip di disable di view, karna itu primary key tidak bisa di edit, kecuali membuat auto increment baru
+  }
+
+  public function hapusPetugas($id)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("DELETE FROM petugas WHERE nip = '$id' ") or die ($db->error);
+  }
+
+  public function editBuku($id)
+  {
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT * FROM buku WHERE kd_buku = '$id' ") or die ($db->error);
+    return $query;
+  }
+
+  public function updateBUku($kdBuku, $buku, $pengarang, $penerbit, $thn_terbit, $lsbn, $jml_buku, $klasifikasi, $sinopsis, $entry)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("UPDATE buku SET jdl_buku = '$buku', pengarang = '$pengarang', penerbit = '$penerbit', thn_terbit = '$thn_terbit', lsbn = '$lsbn', jml_buku = '$jml_buku', klasifikasi = '$klasifikasi', sinopsis = '$sinopsis', tgl_entry = '$entry' WHERE kd_buku = '$kdBuku' ") or die ($db->error);
+    return true;
+  }
+
+  public function hapusBuku($id)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("DELETE FROM buku WHERE kd_buku = '$id' ") or die ($db->error);
+  }
+
+} // end class
 
 
 

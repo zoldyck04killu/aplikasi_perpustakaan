@@ -1,9 +1,3 @@
-<script type="text/javascript">
-    $(document).ready( function () {
-      $('#table').DataTable();
-    } );
-</script>
-
 
 <div class="header-hal">
     <h1>DATA BUKU</h1>
@@ -42,9 +36,11 @@
         <td><?= $a->jml_buku; ?></td>
         <td><?= $a->klasifikasi; ?></td>
         <td>
+          <div class="btn-group" role="group">
           <a href="" class="btn btn-sm btn-success">View</a>
-          <a href="?view=edit-buku" class="btn btn-sm btn-warning">Edit</a>
-          <a href="" class="btn btn-sm btn-danger">Hapus</a>
+          <a href="?view=edit-buku&kd_buku=<?=$a->kd_buku; ?>" class="btn btn-sm btn-warning">Edit</a>
+          <a href="?view=hapus-buku&kd_buku=<?=$a->kd_buku; ?>" class="btn btn-sm btn-danger">Hapus</a>
+          </div>
         </td>
       </tr>
     </tbody>

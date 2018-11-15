@@ -37,8 +37,8 @@
         <td><?= $a->jenkel; ?></td>
 
         <td>
-          <a href="?view=edit-petugas" class="btn btn-sm btn-warning">Edit</a>
-          <a href="" class="btn btn-sm btn-danger">Hapus</a>
+          <a href="?view=edit-petugas&nip=<?=$a->nip; ?>" class="btn btn-sm btn-warning">Edit</a>
+          <a href="?view=hapus-petugas&nip=<?=$a->nip; ?>" class="btn btn-sm btn-danger">Hapus</a>
 
         </td>
       </tr>
