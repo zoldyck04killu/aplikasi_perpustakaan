@@ -19,7 +19,7 @@
         <th>Jenis Kelamin</th>
         <th>Tempat Lahir</th>
         <th>Tanggal Lahir</th>
-        <th>Status</th>
+        <th>Status Mahasiswa</th>
         <th>Opsi</th>
       </tr>
     </thead>

@@ -5,7 +5,7 @@ session_start();
 // rubah data di bawah ini sessuai phpmyadmin
 $host = 'localhost';
 $user = 'root';
-$pass = '';
+$pass = '4';
 $db   = 'aplikasi_perpustakaan';
 // end
 

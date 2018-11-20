@@ -1,1 +1,3 @@
 pada table pengunjung tambah field jekel
+
+id anggota janga autoincrement tapi nrp. jadi nanti ketika diinput di id anggota adalah nrp. dan pada table pinjaman tidak perlu lagi menggunakan field nama_anggota

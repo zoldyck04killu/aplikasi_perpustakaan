@@ -37,7 +37,7 @@
         <td><?= $a->klasifikasi; ?></td>
         <td>
           <div class="btn-group" role="group">
-          <a href="" class="btn btn-sm btn-success">View</a>
+          <a href="?view=view-buku&kd_buku=<?=$a->kd_buku; ?>" class="btn btn-sm btn-success">View</a>
           <a href="?view=edit-buku&kd_buku=<?=$a->kd_buku; ?>" class="btn btn-sm btn-warning">Edit</a>
           <a href="?view=hapus-buku&kd_buku=<?=$a->kd_buku; ?>" class="btn btn-sm btn-danger">Hapus</a>
           </div>

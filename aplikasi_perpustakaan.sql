@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2018 at 12:49 AM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 7.2.8
+-- Generation Time: Nov 20, 2018 at 12:46 PM
+-- Server version: 10.1.37-MariaDB
+-- PHP Version: 7.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -49,7 +49,7 @@ INSERT INTO `admin` (`id_admin`, `admin`, `passadmin`, `tgl_login`) VALUES
 --
 
 CREATE TABLE `anggota` (
-  `id_anggota` int(5) NOT NULL,
+  `id_anggota` varchar(8) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_anggota` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jurusan` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenkel` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -64,8 +64,8 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`id_anggota`, `nama_anggota`, `jurusan`, `jenkel`, `tmp_lahir`, `tgl_lahir`, `status`, `tgl_entry`) VALUES
-(5, 'Muhammad Aldi Renaldy', 'Teknik Inf', 'pria', 'Banjarmasin', '1996-07-23', '1', '2018-11-16'),
-(6, 'Ahmad Syarif', 'Teknik Inf', 'pria', 'Tabalong', '1010-01-01', '1', '2018-11-15');
+('14041011', 'Muhammad Aldi Renaldy', 'Teknik Inf', 'pria', 'Banjarmasin', '1996-07-23', 'aktif', '2018-11-16'),
+('14041084', 'Ahmad Syarif', 'Teknik Inf', 'pria', 'Tabalong', '1010-01-01', 'aktif', '2018-11-15');
 
 -- --------------------------------------------------------
 
@@ -92,7 +92,7 @@ CREATE TABLE `buku` (
 
 INSERT INTO `buku` (`kd_buku`, `jdl_buku`, `pengarang`, `penerbit`, `thn_terbit`, `lsbn`, `jml_buku`, `klasifikasi`, `sinopsis`, `tgl_entry`) VALUES
 (9, 'oke', 'siap', 'mantap', 2019, 10, 20000, 'oke', 'siap oke matnp', '2018-11-16 00:49:19'),
-(1011111, 'web apps', 'syarif', 'PT.Bekantan Jantat', 2018, 100001, 20, 'oke siap', 'ini adlah buku web apps oke', '2018-11-16 00:46:09'),
+(1011111, 'web apps', 'dodo', 'asuuuy', 2018, 100001, 20, 'oke siap', 'ini adlah buku web apps oke', '2018-11-16 00:46:09'),
 (101010101, 'web untuk pemula', 'aldi', 'PT.Bekantan Jantat', 2018, 10, 20, 'oke', 'buku untuk pemula web apps', '2018-11-16 00:46:29');
 
 -- --------------------------------------------------------
@@ -113,6 +113,7 @@ CREATE TABLE `detail_buku` (
 --
 
 CREATE TABLE `klasifikasi_buku` (
+  `id` int(100) NOT NULL,
   `klasifikasi` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `kode` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -198,6 +199,19 @@ CREATE TABLE `pinjaman` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
+-- Dumping data for table `pinjaman`
+--
+
+INSERT INTO `pinjaman` (`no_pinjaman`, `nip`, `nama_petugas`, `id_anggota`, `nama_anggota`, `kd_buku`, `jdl_buku`, `tgl_pinjam`, `tgl_kembali`) VALUES
+(7, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '1011111', 'web apps', '2018-10-20', '2018-10-28'),
+(8, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '101010101', 'web untuk pemula', '2018-10-20', '2018-10-28'),
+(9, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '9', 'oke', '2018-10-20', '2018-10-28'),
+(10, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '1011111', 'web apps', '2018-10-20', '2018-10-28'),
+(11, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '101010101', 'web untuk pemula', '2018-10-20', '2018-10-28'),
+(12, 14041037, 'Muhammad Aldi Renaldy', 14041084, 'Ahmad Syarif', '9', 'oke', '2018-10-20', '2018-10-28'),
+(13, 14041037, 'Muhammad Aldi Renaldy', 14041084, 'Ahmad Syarif', '101010101', 'web untuk pemula', '2018-10-20', '2018-10-28');
+
+--
 -- Indexes for dumped tables
 --
 
@@ -229,7 +243,7 @@ ALTER TABLE `detail_buku`
 -- Indexes for table `klasifikasi_buku`
 --
 ALTER TABLE `klasifikasi_buku`
-  ADD PRIMARY KEY (`klasifikasi`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `pengembalian`
@@ -266,16 +280,16 @@ ALTER TABLE `admin`
   MODIFY `id_admin` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `anggota`
---
-ALTER TABLE `anggota`
-  MODIFY `id_anggota` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
 -- AUTO_INCREMENT for table `detail_buku`
 --
 ALTER TABLE `detail_buku`
   MODIFY `kd_detailBuku` int(15) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `klasifikasi_buku`
+--
+ALTER TABLE `klasifikasi_buku`
+  MODIFY `id` int(100) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pengembalian`
@@ -293,7 +307,7 @@ ALTER TABLE `pengunjung`
 -- AUTO_INCREMENT for table `pinjaman`
 --
 ALTER TABLE `pinjaman`
-  MODIFY `no_pinjaman` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `no_pinjaman` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

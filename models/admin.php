@@ -55,9 +55,13 @@ class Admin
     }
   }
 
-  public function showAnggota(){
+  public function showAnggota($id_anggota = null){
     $db = $this->mysqli->conn;
-    $sql = "SELECT * FROM anggota";
+    if ($id_anggota == null) {
+      $sql = "SELECT * FROM anggota";
+    }else{
+      $sql = "SELECT * FROM anggota WHERE id_anggota = '$id_anggota'";
+    }
     $query = $db->query($sql);
     return $query;
   }
@@ -108,6 +112,14 @@ class Admin
     $query = $db->query($sql);
     return $query;
   }
+
+  public function viewBuku($id){
+    $db = $this->mysqli->conn;
+    $sql = "SELECT * FROM buku WHERE kd_buku = $id";
+    $query = $db->query($sql);
+    return $query;
+  }
+
 
   public function edit($id)
   {
@@ -168,6 +180,80 @@ class Admin
   {
     $db = $this->mysqli->conn;
     $db->query("DELETE FROM buku WHERE kd_buku = '$id' ") or die ($db->error);
+  }
+
+  function saveKlasifikasi($klasifikasi, $kode)
+  {
+    $db = $this->mysqli->conn;
+    $saveKlasifikasi = $db->query("INSERT INTO klasifikasi_buku
+                              (klasifikasi, kode)
+                              VALUES
+                              ('$klasifikasi', '$kode')
+                              ") or die ($db->error);
+    if ($saveKlasifikasi)
+    {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public function showKlasifikasi(){
+    $db = $this->mysqli->conn;
+    $sql = "SELECT * FROM klasifikasi_buku";
+    $query = $db->query($sql);
+    return $query;
+  }
+
+  public function editKlasifikasi($id)
+  {
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT * FROM klasifikasi_buku WHERE id = '$id' ") or die ($db->error);
+    return $query;
+  }
+
+  public function updateKlasifikasi($id, $klasifikasi, $kode)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("UPDATE klasifikasi_buku SET  klasifikasi = '$klasifikasi', kode = '$kode' WHERE id = $id ") or die ($db->error);
+    return true;
+  }
+
+  public function hapusKlasifikasi($id)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("DELETE FROM klasifikasi_buku WHERE id = '$id' ") or die ($db->error);
+  }
+
+  function savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode)
+  {
+    $db = $this->mysqli->conn;
+    $queryPetugas = $db->query("SELECT nama_petugas FROM petugas WHERE nip=$nip ");
+    $Petugas = $queryPetugas->fetch_object();
+    $namaPetugas = $Petugas->nama_petugas;
+
+    $queryBuku = $db->query("SELECT jdl_buku FROM buku WHERE kd_buku=$kode ");
+    $Buku = $queryBuku->fetch_object();
+    $jdlBuku = $Buku->jdl_buku;
+
+    $savePeminjaman = $db->query("INSERT INTO pinjaman
+                              (nip, nama_petugas, id_anggota, nama_anggota, kd_buku, jdl_buku, tgl_pinjam, tgl_kembali)
+                              VALUES
+                              ($nip,'$namaPetugas', $id_anggota, '$nama_anggota', '$kode', '$jdlBuku' ,'$tgl_pinjam', '$tgl_kembali')
+                              ") or die ($db->error);
+    if ($savePeminjaman)
+    {
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+  public function showPeminjaman(){
+    $db = $this->mysqli->conn;
+    $sql = "SELECT * FROM pinjaman";
+    $query = $db->query($sql);
+    return $query;
   }
 
 } // end class

@@ -1,5 +1,5 @@
 <div class="header-hal">
-    <h1>PEMINJAMAN</h1>
+    <h1>PENGEMBALIAN</h1>
     <hr>
 </div>
 

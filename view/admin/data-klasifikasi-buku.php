@@ -19,17 +19,26 @@
         <th>Opsi</th>
       </tr>
     </thead>
+    <?php
+    $data = $objAdmin->showKlasifikasi();
+    $no = 1;
+    while ($a = $data->fetch_object()) {
+    ?>
     <tbody>
       <tr>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td>
-          <a href="?view=edit-klasifikasi-buku" class="btn btn-sm btn-warning">Edit</a>
-          <a href="" class="btn btn-sm btn-danger">Hapus</a>
+        <td style="text-align:center"><?= $no; ?></td>
+        <td style="text-align:center"><?= $a->klasifikasi; ?></td>
+        <td style="text-align:center"><?= $a->kode; ?></td>
+        <td style="text-align:center">
+          <a href="?view=edit-Klasifikasi-buku&kd=<?= $a->id; ?>" class="btn btn-sm btn-warning">Edit</a>
+          <a href="?view=hapus-Klasifikasi-buku&kd=<?= $a->id; ?>" class="btn btn-sm btn-danger">Hapus</a>
 
         </td>
       </tr>
     </tbody>
+    <?php
+    $no++;
+    }
+    ?>
     </table>
 </div>

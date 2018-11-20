@@ -50,14 +50,11 @@
         </div>
       </div>
       <div class="form-group row">
-          <label for="staticEmail" class="col-sm-2 col-form-label">Status</label>
+          <label for="staticEmail" class="col-sm-2 col-form-label">Status Mahasiswa</label>
           <div class="col-sm-10">
               <select class="form-control" id="exampleFormControlSelect1" name="status">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option value="Aktif">Aktif</option>
+                <option value="Tidak">Tidak Aktif</option>
               </select>
           </div>
       </div>

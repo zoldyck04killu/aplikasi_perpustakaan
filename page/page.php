@@ -51,6 +51,10 @@ elseif (@$_GET['view'] == 'data-buku')
 {
     include 'view/admin/data-buku.php';
 }
+elseif (@$_GET['view'] == 'view-buku')
+{
+    include 'view/admin/view-data-buku.php';
+}
 elseif (@$_GET['view'] == 'edit-buku')
 {
     include 'view/admin/edit-buku.php';
@@ -74,6 +78,20 @@ elseif (@$_GET['view'] == 'data-Klasifikasi-buku')
 elseif (@$_GET['view'] == 'edit-Klasifikasi-buku')
 {
     include 'view/admin/edit-klasifikasi-buku.php';
+}
+elseif (@$_GET['view'] == 'hapus-Klasifikasi-buku')
+{
+  $id = $_GET['kd'];
+  $objAdmin->hapusKlasifikasi($id);
+  echo '<script>
+  swal({
+      title: "Alert",
+      text: "Data berhasil dihapus",
+      type: "success"
+  }).then(function() {
+      window.location = "?view=data-Klasifikasi-buku";
+  });
+</script>';
 }
 elseif (@$_GET['view'] == 'peminjaman1')
 {
