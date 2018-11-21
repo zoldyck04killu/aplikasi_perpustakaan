@@ -256,8 +256,38 @@ class Admin
     return $query;
   }
 
+
+  public function tambahAdmin($user, $password_hash, $tglLogin = NULL)
+  {
+    $db = $this->mysqli->conn;
+    $a = $db->query("SELECT * FROM admin WHERE admin = '$user' ") or die ($db->error);
+    $cekUser = $a->num_rows;
+      if ($cekUser > 0) {
+          echo '<script>alert("User sudah ada");</script>';
+          die;
+      }
+      $db->query("INSERT INTO admin VALUES('', '$user', '$password_hash', '$tglLogin')") or die ($db->error);
+  }
+
+  public function cek_userpass($user, $pass_lama)
+  {
+    $db = $this->mysqli->conn;
+    $userdata = $db->query("SELECT * FROM admin WHERE admin = '$user' ") or die ($db->error);
+    $cek = $userdata->num_rows;
+    $cek_2 = $userdata->fetch_array();
+            if (password_verify($pass_lama, $cek_2['passadmin'])) {
+                return true;
+            } else {
+                return false; // password salah
+            }
+  }
+
+  public function changeUserPass($user, $password_hash)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("UPDATE admin SET passadmin = '$password_hash' WHERE admin = '$user' ") or die ($db->error);
+  }
+
 } // end class
-
-
 
 ?>
