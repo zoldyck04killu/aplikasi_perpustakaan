@@ -19,12 +19,12 @@
         <th>Opsi</th>
       </tr>
     </thead>
-    <?php
-    $data = $objAdmin->showBuku();
-    $no = 1;
-    while ($a = $data->fetch_object()) {
-    ?>
     <tbody>
+      <?php
+      $data = $objAdmin->showBuku();
+      $no = 1;
+      while ($a = $data->fetch_object()) {
+      ?>
       <tr>
         <td><?= $no; ?></td>
         <td><?= $a->kd_buku; ?></td>
@@ -43,10 +43,10 @@
           </div>
         </td>
       </tr>
+      <?php
+      $no++;
+      }
+      ?>
     </tbody>
-    <?php
-    $no++;
-    }
-    ?>
-    </table>
+      </table>
 </div>

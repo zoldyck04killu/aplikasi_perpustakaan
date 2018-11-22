@@ -22,12 +22,12 @@
         <th>Opsi</th>
       </tr>
     </thead>
-    <?php
-    $data = $objAdmin->showPetugas();
-    $no = 1;
-    while ($a = $data->fetch_object()) {
-    ?>
     <tbody>
+      <?php
+      $data = $objAdmin->showPetugas();
+      $no = 1;
+      while ($a = $data->fetch_object()) {
+      ?>
       <tr>
         <td><?= $no; ?></td>
         <td><?= $a->nip; ?></td>
@@ -42,10 +42,10 @@
 
         </td>
       </tr>
+      <?php
+      $no++;
+      }
+      ?>
     </tbody>
-    <?php
-    $no++;
-    }
-    ?>
     </table>
 </div>

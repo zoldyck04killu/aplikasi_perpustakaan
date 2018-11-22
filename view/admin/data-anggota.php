@@ -42,10 +42,10 @@
           <a href="?view=hapus&id=<?=$a->id_anggota; ?>" class="btn btn-sm btn-danger">Hapus</a>
         </td>
       </tr>
+      <?php
+      $no++;
+      }
+      ?>
     </tbody>
-    <?php
-    $no++;
-    }
-    ?>
     </table>
 </div>
