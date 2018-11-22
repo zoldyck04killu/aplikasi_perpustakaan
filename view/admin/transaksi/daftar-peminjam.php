@@ -24,19 +24,13 @@
         <th>Opsi</th>
       </tr>
     </thead>
-    <?php
-    $data = $objAdmin->showPeminjaman();
-    $no = 1;
-    $b = $data->fetch_array();
-    // var_dump(array_unique($data->fetch_array()));
-    // echo count($a);
-    // $a = $data->fetch_object();
-    // var_dump($b);
-    // var_dump(unique($b));
-    // var_dump($b);
-    while ($a = $data->fetch_array()) {
-    ?>
     <tbody>
+      <?php
+      $data = $objAdmin->showPeminjaman();
+      $no = 1;
+      $b = $data->fetch_array();
+      while ($a = $data->fetch_array()) {
+      ?>
       <tr>
         <td><?= $no; ?></td>
         <td><?= $a['id_anggota']; ?></td>
@@ -52,10 +46,10 @@
 
         </td>
       </tr>
+      <?php
+      $no++;
+      }
+      ?>
     </tbody>
-    <?php
-    $no++;
-    }
-    ?>
     </table>
 </div>

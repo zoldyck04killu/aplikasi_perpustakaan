@@ -100,12 +100,12 @@ $a = $data->fetch_object();
             <th scope="col">Opsi</th>
           </tr>
         </thead>
-        <?php
-        $data = $objAdmin->showPeminjaman();
-        $no = 1;
-        while ($a = $data->fetch_object()) {
-        ?>
         <tbody>
+          <?php
+          $data = $objAdmin->showPeminjaman();
+          $no = 1;
+          while ($a = $data->fetch_object()) {
+          ?>
           <tr>
             <th scope="row">1</th>
             <td><?= $a->kd_buku; ?></td>
@@ -114,10 +114,9 @@ $a = $data->fetch_object();
               <a href="" class="btn btn-sm btn-danger">Hapus</a>
             </td>
           </tr>
+          <?php } ?>
         </tbody>
-      <?php } ?>
     </table>
-
 </div>
 
 <?php
