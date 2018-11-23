@@ -99,7 +99,19 @@ elseif (@$_GET['view'] == 'peminjaman1')
 }
 elseif (@$_GET['view'] == 'peminjaman2')
 {
+  $id = $_POST['id_anggota'];
+  $data = $objAdmin->checkPeminjam($id);
+  if ($data->num_rows > 0) {
+    echo '<script>
+    swal(
+      "Maaf", "Anda Sudah Melakukan Peminjaman, Silahkan Kembalikan Buku Dulu."
+    ).then(function() {
+        window.location = "?view=peminjaman1";
+    });
+  </script>';
+  }else{
     include 'view/admin/transaksi/peminjaman2.php';
+  }
 }
 elseif (@$_GET['view'] == 'daftar-peminjam')
 {
@@ -107,7 +119,19 @@ elseif (@$_GET['view'] == 'daftar-peminjam')
 }
 elseif (@$_GET['view'] == 'pengembalian')
 {
-    include 'view/admin/transaksi/pengembalian.php';
+  $id = $_GET['no'];
+  $data = $objAdmin->showPeminjaman($id);
+  $b = $data->fetch_array();
+  $objAdmin->Kembalikan($id, $b['id_anggota'], $b['nama_anggota'], $b['kd_buku'], $b['jdl_buku']);
+  echo '<script>
+  swal({
+      title: "Alert",
+      text: "Data berhasil dihapus",
+      type: "success"
+  }).then(function() {
+      window.location = "?view=daftar-peminjam";
+  });
+</script>';
 }
 elseif (@$_GET['view'] == 'tambah-admin')
 {

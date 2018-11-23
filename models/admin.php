@@ -249,9 +249,20 @@ class Admin
     }
   }
 
-  public function showPeminjaman(){
+  public function showPeminjaman($id = NULL){
     $db = $this->mysqli->conn;
-    $sql = "SELECT * FROM pinjaman";
+    if ($id == NULL ) {
+      $sql = "SELECT * FROM pinjaman";
+    }else{
+      $sql = "SELECT * FROM pinjaman WHERE no_pinjaman='$id'";
+    }
+    $query = $db->query($sql);
+    return $query;
+  }
+
+  public function checkPeminjam($id){
+    $db = $this->mysqli->conn;
+    $sql = "SELECT * FROM pinjaman WHERE id_anggota='$id'";
     $query = $db->query($sql);
     return $query;
   }
@@ -282,11 +293,26 @@ class Admin
             }
   }
 
-  public function changeUserPass($user, $password_hash)
+  function Kembalikan($id_pinjam, $id_anggota, $nama_anggota, $kodeBuku, $jdlBuku)
   {
     $db = $this->mysqli->conn;
-    $db->query("UPDATE admin SET passadmin = '$password_hash' WHERE admin = '$user' ") or die ($db->error);
+    // die($nama_anggota);
+    $tgl_kembali = date('Y/m/d');
+    $deletePinjaman = $db->query("DELETE FROM pinjaman WHERE no_pinjaman=$id_pinjam ");
+
+    $saveKemabalikan = $db->query("INSERT INTO pengembalian
+                              (no_pinjam, id_anggota, nama_anggota, kd_buku, jdl_buku, tgl_kembali)
+                              VALUES
+                              ($id_pinjam, $id_anggota, '$nama_anggota', '$kodeBuku', '$jdlBuku', '$tgl_kembali')
+                              ") or die ($db->error);
+    if ($saveKemabalikan && $deletePinjaman)
+    {
+      return true;
+    }else{
+      return false;
+    }
   }
+
 
 } // end class
 

@@ -28,7 +28,6 @@
 
 function cariNama() {
   var id_anggota = document.getElementById("id_anggota").value;
-  // console.log(id_sarang);
   $.ajax({
             url: 'models/ajax.php?proses=namaAnggota',
             data:{id : id_anggota },

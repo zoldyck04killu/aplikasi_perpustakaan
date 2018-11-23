@@ -28,8 +28,14 @@
       <?php
       $data = $objAdmin->showPeminjaman();
       $no = 1;
-      $b = $data->fetch_array();
+      // $b = $data->fetch_array();
       while ($a = $data->fetch_array()) {
+
+        $tgl_skarang = date('d');
+        $tgl_kembali = $a['tgl_kembali'];
+        $day = substr($tgl_kembali,8,2);
+        $jlh_denda = (int)$tgl_skarang - (int)$day;
+        $denda = abs($jlh_denda) * 5000;
       ?>
       <tr>
         <td><?= $no; ?></td>
@@ -39,7 +45,7 @@
         <td><?= $a['jdl_buku']; ?></td>
         <td><?= $a['tgl_pinjam']; ?></td>
         <td><?= $a['tgl_kembali']; ?></td>
-        <td>denda</td>
+        <td><?= "Rp. ".number_format($denda, 0, ".", ".");   ?></td>
 
         <td>
           <a href="?view=pengembalian&no=<?= $a['no_pinjaman'] ?>" class="btn btn-sm btn-success">Dikembalikan</a>
