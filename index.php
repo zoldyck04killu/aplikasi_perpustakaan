@@ -49,7 +49,7 @@ $objAdmin = new Admin($obj);
               <a class="nav-link" href="?view=home">Home <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Cari Buku</a>
+              <a class="nav-link" href="?view=cari-buku">Cari Buku</a>
             </li>
             <li class="nav-item">
               <?php if (isset($_SESSION['user'])) { ?>

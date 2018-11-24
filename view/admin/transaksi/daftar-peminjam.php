@@ -30,12 +30,27 @@
       $no = 1;
       // $b = $data->fetch_array();
       while ($a = $data->fetch_array()) {
+        if (strtotime(date('Y-m-d')) > strtotime($a['tgl_kembali']) ) {
+          // $tgl_skarang = date('d');
+          // // echo -$tgl_skarang;
+          // $tgl_kembali = $a['tgl_kembali'];
+          // $day = substr($tgl_kembali,8,2);
+          // // $tgl1 = "2013-01-23";// pendefinisian tanggal awal
+          // $tgl2 = date('d', strtotime(-$tgl_skarang.' days', strtotime($tgl_kembali))); //operasi penjumlahan tanggal sebanyak 6 hari
+          // // $tgl2 = date('Y-m-d', strtotime('-5 days', strtotime($tgl_kembali))); //operasi penjumlahan tanggal sebanyak 6 hari
+          // echo $tgl2; //print tanggal
 
-        $tgl_skarang = date('d');
-        $tgl_kembali = $a['tgl_kembali'];
-        $day = substr($tgl_kembali,8,2);
-        $jlh_denda = (int)$tgl_skarang - (int)$day;
-        $denda = abs($jlh_denda) * 5000;
+          $tgl_skarang = date('d');
+          $tgl_kembali = $a['tgl_kembali'];
+          $day = substr($tgl_kembali,8,2);
+          $jlh_denda = (int)$tgl_skarang - (int)$day;
+          $denda = abs($jlh_denda) * 5000;
+          // echo $jlh_denda;
+          // die('denda');
+        }else {
+          // die('tidak');
+          $denda = "Tidak Denda";
+        }
       ?>
       <tr>
         <td><?= $no; ?></td>
