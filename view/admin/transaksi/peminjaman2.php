@@ -31,30 +31,20 @@ $a = $data->fetch_object();
         </div>
       </div>
 
-      <script>
-      $(document).ready(function(){
-          var d = new Date();
-          var day = d.getDate();
-          var month = d.getMonth();
-          var year = d.getFullYear();
-          $("#tanggal_pinjam").val(year + "-" + month + "-" + day);
-
-          var tgl_kembali = day + 8;
-          $("#tanggal_kembali").val(year + "-" + month + "-" + tgl_kembali);
-
-      });
-      </script>
-
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Tanggal Pinjam</label>
         <div class="col-sm-10">
-            <input class="form-control" type="date" placeholder="" id="tanggal_pinjam" name="tgl_pinjam">
+            <input class="form-control" type="date" placeholder="" id="tanggal_pinjam" name="tgl_pinjam" value="<?=date('Y-m-d')?>">
         </div>
       </div>
+      <?php
+      $dayToday = date('Y-m-d');
+      $tanggal_kembali = date('Y-m-d', strtotime('+8 days', strtotime($dayToday))); //operasi penjumlahan tanggal sebanyak 6 hari
+      ?>
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Tanggal Kembali</label>
         <div class="col-sm-10">
-            <input class="form-control" type="date" placeholder="" name="tgl_kembali" id="tanggal_kembali">
+            <input class="form-control" type="date" placeholder="" name="tgl_kembali" id="tanggal_kembali" value="<?= $tanggal_kembali ?>">
         </div>
       </div>
       <div class="form-group row">
