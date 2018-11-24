@@ -25,9 +25,9 @@ $a = $data->fetch_object();
         </div>
       </div>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Nip</label>
+        <label for="staticEmail" class="col-sm-2 col-form-label">NIP Petugas</label>
         <div class="col-sm-10">
-            <input class="form-control" type="text" placeholder="Nip" name="nip">
+            <input class="form-control" type="text" placeholder="Nip" name="nip" value="<?= $_SESSION['nip']; ?>" readonly>
         </div>
       </div>
 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.3
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 20, 2018 at 12:46 PM
--- Server version: 10.1.37-MariaDB
--- PHP Version: 7.2.12
+-- Generation Time: Nov 25, 2018 at 01:07 AM
+-- Server version: 10.1.34-MariaDB
+-- PHP Version: 7.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -91,7 +91,7 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`kd_buku`, `jdl_buku`, `pengarang`, `penerbit`, `thn_terbit`, `lsbn`, `jml_buku`, `klasifikasi`, `sinopsis`, `tgl_entry`) VALUES
-(9, 'oke', 'siap', 'mantap', 2019, 10, 20000, 'oke', 'siap oke matnp', '2018-11-16 00:49:19'),
+(9, 'oke', 'siap', 'mantap', 2019, 10, 7, 'oke', 'siap oke matnp', '2018-11-16 00:49:19'),
 (1011111, 'web apps', 'dodo', 'asuuuy', 2018, 100001, 20, 'oke siap', 'ini adlah buku web apps oke', '2018-11-16 00:46:09'),
 (101010101, 'web untuk pemula', 'aldi', 'PT.Bekantan Jantat', 2018, 10, 20, 'oke', 'buku untuk pemula web apps', '2018-11-16 00:46:29');
 
@@ -167,6 +167,7 @@ INSERT INTO `pengunjung` (`id_pengunjung`, `status`, `nrp`, `nama`, `jurusan`, `
 
 CREATE TABLE `petugas` (
   `nip` int(5) NOT NULL,
+  `password` varchar(200) COLLATE utf8mb4_unicode_ci NOT NULL,
   `nama_petugas` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jabatan` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `jenkel` varchar(10) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -177,8 +178,8 @@ CREATE TABLE `petugas` (
 -- Dumping data for table `petugas`
 --
 
-INSERT INTO `petugas` (`nip`, `nama_petugas`, `jabatan`, `jenkel`, `alamat`) VALUES
-(14041037, 'Muhammad Aldi Renaldy', 'IT ', 'pria', 'Jalan Mahligai');
+INSERT INTO `petugas` (`nip`, `password`, `nama_petugas`, `jabatan`, `jenkel`, `alamat`) VALUES
+(14041037, '$2y$10$EdHaUg99IMd06w1B40wQ9uwUY6h7lOl27J3rsHUl5Zf7ON5U3ICK2', 'Muhammad Aldi Renaldy', 'IT', 'pria', 'Jalan Mahligai');
 
 -- --------------------------------------------------------
 
@@ -197,19 +198,6 @@ CREATE TABLE `pinjaman` (
   `tgl_pinjam` date NOT NULL,
   `tgl_kembali` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `pinjaman`
---
-
-INSERT INTO `pinjaman` (`no_pinjaman`, `nip`, `nama_petugas`, `id_anggota`, `nama_anggota`, `kd_buku`, `jdl_buku`, `tgl_pinjam`, `tgl_kembali`) VALUES
-(7, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '1011111', 'web apps', '2018-10-20', '2018-10-28'),
-(8, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '101010101', 'web untuk pemula', '2018-10-20', '2018-10-28'),
-(9, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '9', 'oke', '2018-10-20', '2018-10-28'),
-(10, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '1011111', 'web apps', '2018-10-20', '2018-10-28'),
-(11, 14041037, 'Muhammad Aldi Renaldy', 14041011, 'Muhammad Aldi Renaldy', '101010101', 'web untuk pemula', '2018-10-20', '2018-10-28'),
-(12, 14041037, 'Muhammad Aldi Renaldy', 14041084, 'Ahmad Syarif', '9', 'oke', '2018-10-20', '2018-10-28'),
-(13, 14041037, 'Muhammad Aldi Renaldy', 14041084, 'Ahmad Syarif', '101010101', 'web untuk pemula', '2018-10-20', '2018-10-28');
 
 --
 -- Indexes for dumped tables
@@ -307,7 +295,7 @@ ALTER TABLE `pengunjung`
 -- AUTO_INCREMENT for table `pinjaman`
 --
 ALTER TABLE `pinjaman`
-  MODIFY `no_pinjaman` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `no_pinjaman` int(5) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
