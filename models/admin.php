@@ -236,7 +236,7 @@ class Admin
     $db->query("DELETE FROM klasifikasi_buku WHERE id = '$id' ") or die ($db->error);
   }
 
-  function savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode, $kode2)
+  function savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode)
   {
 
     $db = $this->mysqli->conn;
@@ -337,6 +337,13 @@ $count = count($kode2);
                               VALUES
                               ($id_pinjam, $id_anggota, '$nama_anggota', '$kodeBuku', '$jdlBuku', '$tgl_kembali')
                               ") or die ($db->error);
+
+    $sql = "SELECT jml_buku FROM buku WHERE kd_buku = '$kodeBuku' ";
+    $query = $db->query($sql);
+    $a = $query->fetch_object();
+    $jlh_baru =  $a->jml_buku + 1;
+    $db->query("UPDATE buku SET jml_buku = $jlh_baru  WHERE kd_buku = '$kodeBuku' ") or die ($db->error);
+
     if ($saveKemabalikan && $deletePinjaman)
     {
       return true;

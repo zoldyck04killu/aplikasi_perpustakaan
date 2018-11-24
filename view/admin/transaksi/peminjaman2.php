@@ -129,7 +129,7 @@ if (isset($_POST['savePeminjaman'])) {
       }
     }else{
       $objAdmin->kurangiBuku($kode);
-      $savePeminjaman = $objAdmin->savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode[0]);
+      $savePeminjaman = $objAdmin->savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode);
     }
 
     if ($savePeminjaman) {

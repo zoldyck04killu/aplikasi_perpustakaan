@@ -126,7 +126,7 @@ elseif (@$_GET['view'] == 'pengembalian')
   echo '<script>
   swal({
       title: "Alert",
-      text: "Data berhasil dihapus",
+      text: "Data berhasil diproses",
       type: "success"
   }).then(function() {
       window.location = "?view=daftar-peminjam";
