@@ -44,7 +44,8 @@
           $tgl_kembali = $a['tgl_kembali'];
           $day = substr($tgl_kembali,8,2);
           $jlh_denda = (int)$tgl_skarang - (int)$day;
-          $denda = abs($jlh_denda) * 5000;
+          $hargaDenda = abs($jlh_denda) * 5000;
+          $denda = "Rp. ".number_format($hargaDenda, 0, ".", ".");
           // echo $jlh_denda;
           // die('denda');
         }else {
@@ -60,7 +61,7 @@
         <td><?= $a['jdl_buku']; ?></td>
         <td><?= $a['tgl_pinjam']; ?></td>
         <td><?= $a['tgl_kembali']; ?></td>
-        <td><?= "Rp. ".number_format($denda, 0, ".", ".");   ?></td>
+        <td><?= $denda ?></td>
 
         <td>
           <a href="?view=pengembalian&no=<?= $a['no_pinjaman'] ?>" class="btn btn-sm btn-success">Dikembalikan</a>
