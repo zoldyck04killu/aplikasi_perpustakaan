@@ -157,6 +157,9 @@ elseif (@$_GET['view'] == 'hapus-buku') {
   });
 </script>';
 }
+elseif (@$_GET['view'] == 'cari-buku') {
+    include 'view/cari-buku.php';
+}
 else
 {
   include 'view/404.php';
