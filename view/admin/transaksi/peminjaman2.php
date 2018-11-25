@@ -117,13 +117,12 @@ if (isset($_POST['savePeminjaman'])) {
     $tgl_pinjam = $_POST['tgl_pinjam'];
     $tgl_kembali = $_POST['tgl_kembali'];
     $kode = $_POST['kode'];
-var_dump($kode);
-die;
+
     $jlh_kode = count($kode);
 
     if ($jlh_kode > 1) {
       for ($i=0; $i < $jlh_kode ; $i++) {
-        $savePeminjaman = $objAdmin->savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode[$i]);
+        $savePeminjaman = $objAdmin->savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode[$i], $kode);
       }
     }else{
       $savePeminjaman = $objAdmin->savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode[0]);

@@ -225,8 +225,9 @@ class Admin
     $db->query("DELETE FROM klasifikasi_buku WHERE id = '$id' ") or die ($db->error);
   }
 
-  function savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode)
+  function savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode, $kode2)
   {
+
     $db = $this->mysqli->conn;
     $queryPetugas = $db->query("SELECT nama_petugas FROM petugas WHERE nip=$nip ");
     $Petugas = $queryPetugas->fetch_object();
@@ -244,18 +245,24 @@ class Admin
     if ($savePeminjaman)
     {
 
+$count = count($kode2);
+  if ($count > 1) {
+      for ($i=0; $i < $count ; $i++) {
+        $a = $db->query("SELECT * FROM pinjaman WHERE kd_buku = '$kode[$i]' ") or die ($db->error);
+        $b = $a->num_rows;
 
-      $a = $db->query("SELECT * FROM pinjaman WHERE kd_buku = '$kode' ") or die ($db->error);
-      $b = $a->num_rows;
 
+    $buku1 = $db->query("SELECT * FROM buku WHERE kd_buku = '$kode[$i]' ");
+     $v = $buku1->fetch_array();
+     $c = $v['jml_buku'];
 
-      $buku1 = $db->query("SELECT * FROM buku WHERE kd_buku = '$kode' ");
-      $v = $buku1->fetch_array();
-      $c = $v['jml_buku'];
+       $hasil[] = $c - $b;
 
-      $hasil = $c - $b;
+       $db->query("UPDATE buku SET jml_buku = '$hasil' WHERE kd_buku = '$kode[$i]'");
 
-      $up = $db->query("UPDATE buku SET jml_buku = '$hasil' WHERE kd_buku = '$kode'");
+    }
+  }
+
 
       return true;
     }else{
