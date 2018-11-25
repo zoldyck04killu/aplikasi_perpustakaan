@@ -12,6 +12,12 @@
         </div>
       </div>
       <div class="form-group row">
+        <label for="staticEmail" class="col-sm-2 col-form-label">Password</label>
+        <div class="col-sm-10">
+            <input class="form-control" type="text" placeholder="Password" name="pass">
+        </div>
+      </div>
+      <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
         <div class="col-sm-10">
             <input class="form-control" type="text" placeholder="Nama" name="nama">
@@ -47,12 +53,14 @@
 if (isset($_POST['savePetugas']))
 {
   $nip = $obj->conn->real_escape_string($_POST['nip']);
+  $pass = $obj->conn->real_escape_string($_POST['pass']);
+  $password_hash = password_hash($pass, PASSWORD_DEFAULT);
   $nama = $obj->conn->real_escape_string($_POST['nama']);
   $jekel = $obj->conn->real_escape_string($_POST['jekel']);
   $jabatan = $obj->conn->real_escape_string($_POST['jabatan']);
   $alamat = $obj->conn->real_escape_string($_POST['alamat']);
 
-  $savePetugas = $objAdmin->savePetugas($nip, $nama, $jekel, $jabatan, $alamat);
+  $savePetugas = $objAdmin->savePetugas($nip, $password_hash, $nama, $jekel, $jabatan, $alamat);
   if ($savePetugas) {
       echo "<script>
       swal(

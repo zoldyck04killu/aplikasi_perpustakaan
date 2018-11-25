@@ -25,9 +25,9 @@ $a = $data->fetch_object();
         </div>
       </div>
       <div class="form-group row">
-        <label for="staticEmail" class="col-sm-2 col-form-label">Nip</label>
+        <label for="staticEmail" class="col-sm-2 col-form-label">NIP Petugas</label>
         <div class="col-sm-10">
-            <input class="form-control" type="text" placeholder="Nip" name="nip">
+            <input class="form-control" type="text" placeholder="Nip" name="nip" value="<?= $_SESSION['nip']; ?>" readonly>
         </div>
       </div>
 
@@ -117,15 +117,15 @@ if (isset($_POST['savePeminjaman'])) {
     $tgl_pinjam = $_POST['tgl_pinjam'];
     $tgl_kembali = $_POST['tgl_kembali'];
     $kode = $_POST['kode'];
-
+var_dump($kode);
+die;
     $jlh_kode = count($kode);
-    // die($id_anggota);
+
     if ($jlh_kode > 1) {
       for ($i=0; $i < $jlh_kode ; $i++) {
         $savePeminjaman = $objAdmin->savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode[$i]);
       }
     }else{
-      // echo $kode[0];
       $savePeminjaman = $objAdmin->savePeminjaman($id_anggota, $nama_anggota, $nip, $tgl_pinjam, $tgl_kembali, $kode[0]);
     }
 

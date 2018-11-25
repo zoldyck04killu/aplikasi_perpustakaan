@@ -52,13 +52,17 @@ $objAdmin = new Admin($obj);
               <a class="nav-link" href="?view=cari-buku">Cari Buku</a>
             </li>
             <li class="nav-item">
-              <?php if (isset($_SESSION['user'])) { ?>
+              <?php if (isset($_SESSION['user']) || @$_SESSION['nip']) { ?>
                 <a class="nav-link" href="?view=logout-admin">Log Out</a>
               <?php } else { ?>
                 <a class="nav-link" href="?view=login-admin">Login Admin</a>
+                <li class="nav-item">
+                  <a class="nav-link" href="?view=login-petugas">Login Petugas</a>
+                </li>
               <?php } ?>
             </li>
-            <?php if (isset($_SESSION['user'])) { ?>
+
+            <?php if (isset($_SESSION['nip']) || @$_SESSION['user']) { ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Data Anggota
@@ -68,6 +72,7 @@ $objAdmin = new Admin($obj);
                     <a class="dropdown-item" href="?view=data-anggota">Data Anggota</a>
                   </div>
                 </li>
+        <?php if (@$_SESSION['user']) {?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Data Petugas
@@ -76,6 +81,7 @@ $objAdmin = new Admin($obj);
                     <a class="dropdown-item" href="?view=input-petugas">Input Petugas</a>
                     <a class="dropdown-item" href="?view=data-petugas">Data Petugas</a>
                   </div>
+        <?php } ?>
                 </li>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -91,6 +97,7 @@ $objAdmin = new Admin($obj);
 
                   </div>
                 </li>
+            <?php if (@$_SESSION['nip']) { ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Transaksi
@@ -100,6 +107,7 @@ $objAdmin = new Admin($obj);
                     <a class="dropdown-item" href="?view=daftar-peminjam">Pengembalian</a>
                   </div>
                 </li>
+              <?php } ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Laporan
@@ -115,6 +123,7 @@ $objAdmin = new Admin($obj);
                     <a class="dropdown-item" href="#">Laporan Peminjaman</a>
                   </div>
                 </li>
+        <?php if (@$_SESSION['user']) { ?>
                 <li class="nav-item dropdown">
                   <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Konfigurasi
@@ -126,6 +135,7 @@ $objAdmin = new Admin($obj);
 
                   </div>
                 </li>
+              <?php } ?>
             <?php } ?>
 
           </ul>

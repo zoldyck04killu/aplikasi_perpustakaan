@@ -184,6 +184,9 @@ elseif (@$_GET['view'] == 'hapus-buku') {
 elseif (@$_GET['view'] == 'cari-buku') {
     include 'view/cari-buku.php';
 }
+elseif (@$_GET['view'] == 'login-petugas') {
+    include 'view/petugas/login.php';
+}
 else
 {
   include 'view/404.php';

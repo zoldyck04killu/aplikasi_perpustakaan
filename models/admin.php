@@ -66,13 +66,13 @@ class Admin
     return $query;
   }
 
-  function savePetugas($nip, $nama, $jekel, $jabatan, $alamat)
+  function savePetugas($nip, $password_hash, $nama, $jekel, $jabatan, $alamat)
   {
     $db = $this->mysqli->conn;
     $savePetugas = $db->query("INSERT INTO petugas
-                              (nip, nama_petugas, jabatan, jenkel, alamat)
+                              (nip, password, nama_petugas, jabatan, jenkel, alamat)
                               VALUES
-                              ('$nip', '$nama', '$jabatan', '$jekel', '$alamat')
+                              ('$nip', '$password_hash', '$nama', '$jabatan', '$jekel', '$alamat')
                               ") or die ($db->error);
     if ($savePetugas)
     {
@@ -148,10 +148,10 @@ class Admin
     return $query;
   }
 
-  public function updatePetugas($nip, $nama, $jabatan, $jenkel, $alamat)
+  public function updatePetugas($nip, $password_hash, $nama, $jabatan, $jenkel, $alamat)
   {
     $db = $this->mysqli->conn;
-    $db->query("UPDATE petugas SET nama_petugas = '$nama', jabatan = '$jabatan', jenkel = '$jenkel', alamat = '$alamat' WHERE nip = '$nip' ") or die ($db->error);
+    $db->query("UPDATE petugas SET nama_petugas = '$nama', password = '$password_hash', jabatan = '$jabatan', jenkel = '$jenkel', alamat = '$alamat' WHERE nip = '$nip' ") or die ($db->error);
     return true;
     //sengaja nip di disable di view, karna itu primary key tidak bisa di edit, kecuali membuat auto increment baru
   }
@@ -243,6 +243,20 @@ class Admin
                               ") or die ($db->error);
     if ($savePeminjaman)
     {
+
+
+      $a = $db->query("SELECT * FROM pinjaman WHERE kd_buku = '$kode' ") or die ($db->error);
+      $b = $a->num_rows;
+
+
+      $buku1 = $db->query("SELECT * FROM buku WHERE kd_buku = '$kode' ");
+      $v = $buku1->fetch_array();
+      $c = $v['jml_buku'];
+
+      $hasil = $c - $b;
+
+      $up = $db->query("UPDATE buku SET jml_buku = '$hasil' WHERE kd_buku = '$kode'");
+
       return true;
     }else{
       return false;
@@ -313,6 +327,21 @@ class Admin
     }
   }
 
+
+  // PETUGAS //
+
+  public function loginPetugas($nip, $password){
+  $db = $this->mysqli->conn;
+  $userdata = $db->query("SELECT * FROM petugas WHERE nip = '$nip' ") or die ($db->error);
+  $cek = $userdata->num_rows;
+  $cek_2 = $userdata->fetch_array();
+          if (password_verify($password, $cek_2['password'])) {
+              $_SESSION['nip'] = $cek_2['nip'];
+              return true;
+          } else {
+              return false; // password salah
+          }
+  }
 
 } // end class
 
