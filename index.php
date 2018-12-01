@@ -1,4 +1,6 @@
 <?php
+// require_once 'config/autoload.php';
+
 require_once 'config/config.php';
 require_once 'config/connection.php';
 include('models/pengunjung.php');
@@ -113,12 +115,12 @@ $objAdmin = new Admin($obj);
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="?view=data-pengunjung">Laporan Data Pengunjung</a>
                     <a class="dropdown-item" href="#">Laporan Grafik Pengunjung</a>
-                    <a class="dropdown-item" href="#">Laporan Data Anggota</a>
-                    <a class="dropdown-item" href="#">Laporan Data Petugas</a>
-                    <a class="dropdown-item" href="#">Laporan Data Buku</a>
-                    <a class="dropdown-item" href="#">Laporan Detil Buku</a>
-                    <a class="dropdown-item" href="#">Laporan Klasifikasi Buku</a>
-                    <a class="dropdown-item" href="#">Laporan Peminjaman</a>
+                    <a class="dropdown-item" href="view/laporan/laporan-data-anggota.php">Laporan Data Anggota</a>
+                    <a class="dropdown-item" href="view/laporan/laporan-data-petugas.php">Laporan Data Petugas</a>
+                    <a class="dropdown-item" href="view/laporan/laporan-data-buku.php">Laporan Data Buku</a>
+                    <a class="dropdown-item" href="view/laporan/laporan-detail-buku.php">Laporan Detil Buku</a>
+                    <a class="dropdown-item" href="view/laporan/laporan-klasifikasi-anggota.php">Laporan Klasifikasi Buku</a>
+                    <a class="dropdown-item" href="view/laporan/laporan-peminjaman.php">Laporan Peminjaman</a>
                   </div>
                 </li>
         <?php if (@$_SESSION['user']) { ?>

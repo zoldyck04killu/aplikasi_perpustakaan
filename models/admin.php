@@ -216,6 +216,13 @@ class Admin
     return $query;
   }
 
+  public function showDetailBuku(){
+    $db = $this->mysqli->conn;
+    $sql = "SELECT * FROM detail_buku";
+    $query = $db->query($sql);
+    return $query;
+  }
+
   public function editKlasifikasi($id)
   {
     $db = $this->mysqli->conn;
