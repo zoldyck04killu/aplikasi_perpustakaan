@@ -187,6 +187,13 @@ elseif (@$_GET['view'] == 'cari-buku') {
 elseif (@$_GET['view'] == 'login-petugas') {
     include 'view/petugas/login.php';
 }
+elseif (@$_GET['view'] == 'data-pengunjung') {
+    include 'view/admin/lap-pengunjung/data.php';
+}
+elseif (@$_GET['view'] == 'cetak-pengunjung') {
+    include 'view/admin/lap-pengunjung/cetak.php';
+}
+
 else
 {
   include 'view/404.php';

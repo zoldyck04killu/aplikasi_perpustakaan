@@ -368,6 +368,13 @@ $count = count($kode2);
           }
   }
 
+  public function dataPengunjung()
+  {
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT * FROM pengunjung ");
+    return $query;
+  }
+
 } // end class
 
 ?>
