@@ -5,7 +5,7 @@
 </div>
 <div class="left">
 </div>
-<a href="view/laporan/laporan-pengunjung.php" style="position: relative; left:1%;" class="btn btn-sm btn-primary">Cetak</a>
+<a href="view/laporan/laporan-grafik-pengunjung.php" style="position: relative; left:1%;" class="btn btn-sm btn-primary">Cetak</a>
 
 <div class="grafik-table">
     Pengunjung Hari Ini Per Jenis Kelamin

@@ -30,7 +30,7 @@ $pdf->setFooterFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 $pdf->SetDefaultMonospacedFont(PDF_FONT_MONOSPACED);
 
 // set margin
-$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP + 20, PDF_MARGIN_RIGHT);
+$pdf->SetMargins(PDF_MARGIN_LEFT, PDF_MARGIN_TOP + 10, PDF_MARGIN_RIGHT);
 $pdf->SetHeaderMargin(PDF_MARGIN_HEADER);
 $pdf->setFooterMargin(PDF_MARGIN_FOOTER);
 
@@ -52,17 +52,12 @@ $pdf->AddPage();
 // $pdf->writeHTMLCell(0, 0, '', '', '<H2>NOTA PEMBELIAN</H2>' , 0, 2, 0, true, 'C', true);
 
 $html=<<<EOD
-    <center> <h1> Laporan Pengunjung </h1> </center>
+    <center> <h1> Pengunjung Hari Ini Per Jenis Kelamin  </h1> </center>
     <table border="1">
       <tr align="center" style="font-weight: bold;">
-          <th width="50">No</th>
-          <th width="170">Nama</th>
-          <th>Status</th>
-          <th>Kategori</th>
-          <th>NRP</th>
-          <th>Jurusan</th>
-          <th>Jenis Kelamin</th>
-          <th>Tgl Masuk</th>
+          <th>Laki-Laki</th>
+          <th>Perempuan</th>
+          <th>Jumlah</th>
       </tr>
     </table>
 EOD;
@@ -70,45 +65,75 @@ EOD;
 $html2=<<<EOD
   <table border="1" cellpadding="4">
       <tr>
-        <td width="50">
+        <td>
 EOD;
+
 $html5=<<<EOD
         </td>
       </tr>
     </table>
 EOD;
+
+// $pdf->Ln(0);
 $pdf->SetX(10);
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
 
-$no = 1;
-  $sql = $objAdmin->dataPengunjung();
-	while ($data = $sql->fetch_object()) {
-      if ($data->kategori == 1)
-      {
-          $kategori = 'Mahasiswa';
-      }
-      elseif ($data->kategori == 2)
-      {
-        $kategori = 'Dosen';
-      }
+$pdf->SetX(10);
+$pdf->writeHTMLCell(0, 0, '', '', $html2.'1</td><td>2</td><td>3'.$html5 , 0, 1, 0, true, '', true);
 
-      $pdf->SetX(10);
-      $pdf->writeHTMLCell(0, 0, '', '', $html2.''.
-            $no.'</td>
-            <td width="170">'.$data->nama.'</td>
-            <td>'.$data->status.'</td>
-            <td>'.$kategori.'</td>
-            <td>'.$data->nrp.'</td>
-            <td>'.$data->jurusan.'</td>
-            <td>'.$data->jekel.'</td>
-            <td>'.$data->tgl_entry.'
-            '.$html5 , 0, 1, 0, true, '', true);
-    $no++;
-  }
+$html=<<<EOD
+    <center> <h1> Pengunjung Hari Ini Per Jenis Pengunjung   </h1> </center>
+    <table border="1">
+      <tr align="center" style="font-weight: bold;">
+          <th>Mahasiswa</th>
+          <th>Dosen</th>
+          <th>Jumlah</th>
+      </tr>
+    </table>
+EOD;
+
+$pdf->Ln(10);
+$pdf->SetX(10);
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
+$pdf->SetX(10);
+$pdf->writeHTMLCell(0, 0, '', '', $html2.'1</td><td>2</td><td>3'.$html5 , 0, 1, 0, true, '', true);
 
 
-// $pdf->Ln(10);
-// $pdf->SetX(20);
+$html=<<<EOD
+    <center> <h1> Pengunjung Bulan Ini Per Jenis Kelamin  </h1> </center>
+    <table border="1">
+      <tr align="center" style="font-weight: bold;">
+          <th>Laki-Laki</th>
+          <th>Perempuan</th>
+          <th>Jumlah</th>
+      </tr>
+    </table>
+EOD;
+
+$pdf->Ln(10);
+$pdf->SetX(10);
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
+$pdf->SetX(10);
+$pdf->writeHTMLCell(0, 0, '', '', $html2.'5</td><td>2</td><td>7'.$html5 , 0, 1, 0, true, '', true);
+
+$html=<<<EOD
+    <center> <h1> Pengunjung Bulan Ini Per Jenis Pengunjung   </h1> </center>
+    <table border="1">
+      <tr align="center" style="font-weight: bold;">
+          <th>Mahasiswa</th>
+          <th>Dosen</th>
+          <th>Jumlah</th>
+      </tr>
+    </table>
+EOD;
+
+$pdf->Ln(10);
+$pdf->SetX(10);
+$pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
+$pdf->SetX(10);
+$pdf->writeHTMLCell(0, 0, '', '', $html2.'2</td><td>5</td><td>7'.$html5 , 0, 1, 0, true, '', true);
+
+
 // $pdf->Cell(60,0, 'Laporan dari Tanggal '.$a.' Sampai '.$b, 0, 1, 'L', 0, '', 0);
 
 ob_end_clean();
