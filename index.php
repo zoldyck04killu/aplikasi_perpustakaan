@@ -91,10 +91,8 @@ $objAdmin = new Admin($obj);
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="?view=input-buku">Input Buku</a>
                     <a class="dropdown-item" href="?view=data-buku">Data Buku</a>
-                    <a class="dropdown-item" href="?view=input-detail-buku">Input Detail Buku</a>
-                    <a class="dropdown-item" href="?view=detail-buku">Detail Buku</a>
-                    <a class="dropdown-item" href="?view=input-Klasifikasi-buku">Input Klasifikasi Buku</a>
-                    <a class="dropdown-item" href="?view=data-Klasifikasi-buku">Klasifikasi Buku</a>
+                    <!-- <a class="dropdown-item" href="?view=input-Klasifikasi-buku">Input Klasifikasi Buku</a> -->
+                    <!-- <a class="dropdown-item" href="?view=data-Klasifikasi-buku">Klasifikasi Buku</a> -->
                   </div>
                 </li>
             <?php if (@$_SESSION['nip']) { ?>
@@ -114,12 +112,11 @@ $objAdmin = new Admin($obj);
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="?view=data-pengunjung">Laporan Data Pengunjung</a>
-                    <a class="dropdown-item" href="#">Laporan Grafik Pengunjung</a>
+                    <a class="dropdown-item" href="?view=grafik-pengunjung">Laporan Grafik Pengunjung</a>
                     <a class="dropdown-item" href="view/laporan/laporan-data-anggota.php">Laporan Data Anggota</a>
                     <a class="dropdown-item" href="view/laporan/laporan-data-petugas.php">Laporan Data Petugas</a>
                     <a class="dropdown-item" href="view/laporan/laporan-data-buku.php">Laporan Data Buku</a>
-                    <a class="dropdown-item" href="view/laporan/laporan-detail-buku.php">Laporan Detil Buku</a>
-                    <a class="dropdown-item" href="view/laporan/laporan-klasifikasi-anggota.php">Laporan Klasifikasi Buku</a>
+                    <!-- <a class="dropdown-item" href="view/laporan/laporan-klasifikasi-anggota.php">Laporan Klasifikasi Buku</a> -->
                     <a class="dropdown-item" href="view/laporan/laporan-peminjaman.php">Laporan Peminjaman</a>
                   </div>
                 </li>

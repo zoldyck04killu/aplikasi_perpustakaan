@@ -16,6 +16,7 @@
         <th>LSBN</th>
         <th>Jumlah Buku</th>
         <th>Klasifikasi</th>
+        <th>Opsi</th>
       </tr>
     </thead>
     <tbody>
@@ -34,6 +35,11 @@
         <td><?= $a->lsbn; ?></td>
         <td><?= $a->jml_buku; ?></td>
         <td><?= $a->klasifikasi; ?></td>
+        <td>
+          <div class="btn-group" role="group">
+            <a href="?view=view-buku&kd_buku=<?=$a->kd_buku; ?>" class="btn btn-sm btn-success">View</a>
+          </div>
+        </td>
       </tr>
       <?php
       $no++;

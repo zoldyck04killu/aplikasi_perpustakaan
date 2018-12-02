@@ -38,14 +38,14 @@ class Admin
     session_destroy();
   }
 
-  function saveAnggota($nama, $jurusan, $jekel, $temp_lhr, $tl, $status)
+  function saveAnggota($id, $nama, $jurusan, $jekel, $temp_lhr, $tl, $status)
   {
     $db = $this->mysqli->conn;
     $tgl_Entry = date('Y/m/d');
     $saveAnggota = $db->query("INSERT INTO anggota
-                              (nama_anggota,jurusan, jenkel, tmp_lahir, tgl_lahir, status, tgl_entry)
+                              (id_anggota, nama_anggota,jurusan, jenkel, tmp_lahir, tgl_lahir, status, tgl_entry)
                               VALUES
-                              ('$nama', '$jurusan', '$jekel', '$temp_lhr', '$tl', '$status','$tgl_Entry')
+                              ('$id','$nama', '$jurusan', '$jekel', '$temp_lhr', '$tl', '$status','$tgl_Entry')
                               ") or die ($db->error);
     if ($saveAnggota)
     {
@@ -95,7 +95,7 @@ class Admin
     $saveBuku = $db->query("INSERT INTO buku
                               (kd_buku, jdl_buku, pengarang, penerbit, thn_terbit, lsbn, jml_buku, klasifikasi, sinopsis, tgl_entry)
                               VALUES
-                              ($kdBuku, '$buku', '$pengarang', '$penerbit', '$thn_terbit', $isbn, '$jlh_buku', '$klasifikasi', '$sinopsis', '$entry')
+                              ($kdBuku, '$buku', '$pengarang', '$penerbit', '$thn_terbit', '$isbn', '$jlh_buku', '$klasifikasi', '$sinopsis', '$entry')
                               ")
                               or die ($db->error);
     if ($saveBuku)

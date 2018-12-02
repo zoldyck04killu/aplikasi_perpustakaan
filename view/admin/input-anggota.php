@@ -5,12 +5,12 @@
 
 <div class="form">
     <form method="post" action="">
-      <!-- <div class="form-group row">
+      <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Id Anggota</label>
         <div class="col-sm-10">
-            <input class="form-control" type="text" placeholder="Id Anggota">
+            <input class="form-control" type="text" placeholder="Id Anggota" name="id">
         </div>
-      </div> -->
+      </div>
       <div class="form-group row">
         <label for="staticEmail" class="col-sm-2 col-form-label">Nama</label>
         <div class="col-sm-10">
@@ -66,6 +66,7 @@
 <?php
 if (isset($_POST['saveAnggota']))
 {
+  $id = $obj->conn->real_escape_string($_POST['id']);
   $nama = $obj->conn->real_escape_string($_POST['nama']);
   $jurusan = $obj->conn->real_escape_string($_POST['jurusan']);
   $jekel = $obj->conn->real_escape_string($_POST['jekel']);
@@ -73,7 +74,7 @@ if (isset($_POST['saveAnggota']))
   $tl = $obj->conn->real_escape_string($_POST['tl']);
   $status = $obj->conn->real_escape_string($_POST['status']);
 
-  $saveAnggota = $objAdmin->saveAnggota($nama, $jurusan, $jekel, $temp_lhr, $tl, $status);
+  $saveAnggota = $objAdmin->saveAnggota($id, $nama, $jurusan, $jekel, $temp_lhr, $tl, $status);
   if ($saveAnggota) {
       echo "<script>
       swal(

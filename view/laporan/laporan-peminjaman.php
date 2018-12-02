@@ -71,7 +71,7 @@ EOD;
 $html2=<<<EOD
   <table border="1" cellpadding="4">
       <tr>
-        <td width="50">
+        <td>
 EOD;
 $html5=<<<EOD
         </td>

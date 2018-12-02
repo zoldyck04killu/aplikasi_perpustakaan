@@ -14,6 +14,7 @@
       <thead>
       <tr>
         <th>No</th>
+        <th>NRP</th>
         <th>Nama</th>
         <th>Jurusan</th>
         <th>Jenis Kelamin</th>
@@ -31,6 +32,7 @@
     ?>
       <tr>
         <td><?= $no ?></td>
+        <td><?= $a->id_anggota; ?></td>
         <td><?= $a->nama_anggota; ?></td>
         <td><?= $a->jurusan; ?></td>
         <td><?= $a->jenkel; ?></td>

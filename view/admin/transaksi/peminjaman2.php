@@ -77,7 +77,7 @@ $a = $data->fetch_object();
       <button type="submit" class="btn btn-primary" name="savePeminjaman">Simpan</button>
 
     </form>
-    <br>
+    <!-- <br>
     <hr class="for-table">
     <h3>Daftar Buku DiPinjam</h3>
 
@@ -92,22 +92,22 @@ $a = $data->fetch_object();
         </thead>
         <tbody>
           <?php
-          $data = $objAdmin->showPeminjaman();
-          $no = 1;
-          while ($a = $data->fetch_object()) {
+          // $data = $objAdmin->showPeminjaman();
+          // $no = 1;
+          // while ($a = $data->fetch_object()) {
           ?>
           <tr>
             <th scope="row">1</th>
-            <td><?= $a->kd_buku; ?></td>
-            <td><?= $a->jdl_buku; ?></td>
+            <td><?php // $a->kd_buku; ?></td>
+            <td><?php //$a->jdl_buku; ?></td>
             <td>
               <a href="" class="btn btn-sm btn-danger">Hapus</a>
             </td>
           </tr>
-          <?php } ?>
+          <?php //} ?>
         </tbody>
     </table>
-</div>
+</div> -->
 
 <?php
 if (isset($_POST['savePeminjaman'])) {

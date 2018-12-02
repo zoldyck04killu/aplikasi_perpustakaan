@@ -42,6 +42,10 @@ hr {
   margin: 20px 20px;
 }
 
+.grafik-table{
+  margin: 50px 200px;
+}
+
 .view-buku {
   border: 2px solid none;
   border-radius: 50px 50px 50px 50px;

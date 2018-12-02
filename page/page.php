@@ -190,6 +190,9 @@ elseif (@$_GET['view'] == 'login-petugas') {
 elseif (@$_GET['view'] == 'data-pengunjung') {
     include 'view/admin/lap-pengunjung/data.php';
 }
+elseif (@$_GET['view'] == 'grafik-pengunjung') {
+    include 'view/admin/lap-pengunjung/grafik-pengunjung.php';
+}
 elseif (@$_GET['view'] == 'cetak-pengunjung') {
     include 'view/laporan/laporan-pengunjung.php';
 }
