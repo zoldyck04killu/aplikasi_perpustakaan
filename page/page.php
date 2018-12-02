@@ -190,6 +190,19 @@ elseif (@$_GET['view'] == 'login-petugas') {
 elseif (@$_GET['view'] == 'data-pengunjung') {
     include 'view/admin/lap-pengunjung/data.php';
 }
+elseif (@$_GET['view'] == 'hapus-pengunjung') {
+  $id = $_GET['kd'];
+  $objAdmin->hapusPengunjung($id);
+  echo '<script>
+  swal({
+      title: "Alert",
+      text: "Data berhasil dihapus",
+      type: "success"
+  }).then(function() {
+      window.location = "?view=data-pengunjung";
+  });
+</script>';
+}
 elseif (@$_GET['view'] == 'grafik-pengunjung') {
     include 'view/admin/lap-pengunjung/grafik-pengunjung.php';
 }

@@ -13,11 +13,11 @@ class Pengunjung
     $this->mysqli = $mysqli;
   }
 
-  function saveBukuTamu($status,$nrp,$nama,$jurusan,$jekel)
+  function saveBukuTamu($status, $kategori, $nrp, $nama, $jurusan, $jekel)
   {
     $db = $this->mysqli->conn;
     $tgl_Entry = date('Y/m/d');
-    $db->query("INSERT INTO pengunjung (status,nrp,nama,jurusan,jekel,tgl_entry) VALUES('$status',$nrp,'$nama','$jurusan','$jekel','$tgl_Entry')") or die ($db->error);
+    $db->query("INSERT INTO pengunjung (status,kategori,nrp,nama,jurusan,jekel,tgl_entry) VALUES('$status','$kategori',$nrp,'$nama','$jurusan','$jekel','$tgl_Entry')") or die ($db->error);
   }
 
 }

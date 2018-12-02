@@ -13,6 +13,7 @@
         <th>No</th>
         <th>Nama</th>
         <th>Status</th>
+        <th>Kategori</th>
         <th>NRP</th>
         <th>Jurusan</th>
         <th>Jenis Kelamin</th>
@@ -30,13 +31,18 @@
         <td><?= $no; ?></td>
         <td><?= $a->nama; ?></td>
         <td><?= $a->status; ?></td>
+        <?php if ($a->kategori == 1): ?>
+          <td>Mahasiswa</td>
+        <?php elseif ($a->kategori == 2) : ?>
+          <td>Dosen</td>
+        <?php endif; ?>
         <td><?= $a->nrp; ?></td>
         <td><?= $a->jurusan; ?></td>
         <td><?= $a->jekel; ?></td>
         <td><?= $a->tgl_entry; ?></td>
         <td>
           <div class="btn-group" role="group">
-          <a href="#" class="btn btn-sm btn-danger">Hapus</a>
+          <a href="?view=hapus-pengunjung&kd=<?=$a->id_pengunjung; ?>" class="btn btn-sm btn-danger">Hapus</a>
           </div>
         </td>
       </tr>

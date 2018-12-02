@@ -382,6 +382,13 @@ $count = count($kode2);
     return $query;
   }
 
+  public function hapusPengunjung($id)
+  {
+    $db = $this->mysqli->conn;
+    $db->query("DELETE FROM pengunjung WHERE id_pengunjung = '$id' ") or die ($db->error);
+  }
+
+
 } // end class
 
 ?>
