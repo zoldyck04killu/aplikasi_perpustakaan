@@ -382,6 +382,70 @@ $count = count($kode2);
     return $query;
   }
 
+  public function dataPengunjungBulanPria()
+  {
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT * FROM pengunjung WHERE jekel = 'pria' ");
+    return $query;
+  }
+
+  public function dataPengunjungBulanWanita()
+  {
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT * FROM pengunjung WHERE jekel = 'wanita' ");
+    return $query;
+  }
+
+
+  public function dataPengunjungHariPria()
+  {
+    $date =  date('Y-m-d');
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT COUNT(*) as pria FROM pengunjung WHERE tgl_entry = '$date' AND jekel = 'pria' ");
+    return $query;
+  }
+
+  public function dataPengunjungHariWanita()
+  {
+    $date =  date('Y-m-d');
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT COUNT(*) as wanita FROM pengunjung WHERE tgl_entry = '$date' AND jekel = 'wanita' ");
+    return $query;
+  }
+
+  public function dataPengunjungHariDosen()
+  {
+    $date =  date('Y-m-d');
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT COUNT(*) as dosen FROM pengunjung WHERE tgl_entry = '$date' AND kategori = '2' ");
+    return $query;
+  }
+
+  public function dataPengunjungBulanDosen()
+  {
+    $date =  date('Y-m-d');
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT * FROM pengunjung WHERE kategori = '2' ");
+    return $query;
+  }
+
+  public function dataPengunjungBulanMHS()
+  {
+    $date =  date('Y-m-d');
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT * FROM pengunjung WHERE kategori = '2' ");
+    return $query;
+  }
+
+  public function dataPengunjungHariMHS()
+  {
+    $date =  date('Y-m-d');
+    $db = $this->mysqli->conn;
+    $query = $db->query("SELECT COUNT(*) as mhs FROM pengunjung WHERE tgl_entry = '$date' AND kategori = '1' ");
+    return $query;
+  }
+
+
   public function hapusPengunjung($id)
   {
     $db = $this->mysqli->conn;
