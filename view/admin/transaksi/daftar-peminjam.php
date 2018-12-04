@@ -38,13 +38,18 @@
           // // $tgl1 = "2013-01-23";// pendefinisian tanggal awal
           // $tgl2 = date('d', strtotime(-$tgl_skarang.' days', strtotime($tgl_kembali))); //operasi penjumlahan tanggal sebanyak 6 hari
           // // $tgl2 = date('Y-m-d', strtotime('-5 days', strtotime($tgl_kembali))); //operasi penjumlahan tanggal sebanyak 6 hari
-          // echo $tgl2; //print tanggal
 
-          $tgl_skarang = date('d');
-          $tgl_kembali = $a['tgl_kembali'];
-          $day = substr($tgl_kembali,8,2);
-          $jlh_denda = (int)$tgl_skarang - (int)$day;
-          $hargaDenda = abs($jlh_denda) * 5000;
+          // echo $tgl2; //print tanggal
+          $datetime1 = new DateTime(date('Y-m-d'));
+          $datetime2 = new DateTime($a['tgl_kembali']);
+          $interval = $datetime2->diff($datetime1);
+          $jlmdenda =  $interval->format('%a');
+
+          // $tgl_skarang = date('d');
+          // $tgl_kembali = $a['tgl_kembali'];
+          // $day = substr($tgl_kembali,8,2);
+          // $jlh_denda = (int)$tgl_skarang - (int)$day;
+          $hargaDenda = $jlmdenda * 5000;
           $denda = "Rp. ".number_format($hargaDenda, 0, ".", ".");
           // echo $jlh_denda;
           // die('denda');
