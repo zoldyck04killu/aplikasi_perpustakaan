@@ -7,6 +7,69 @@ include('../../models/admin.php');
 $obj = new Connection($host, $user, $pass, $db);
 $objAdmin = new Admin($obj);
 
+$date =  date('Y-m-d');
+$monthNow = substr($date,5,2);
+// echo $monthNow;
+
+$data = $objAdmin->dataPengunjungBulanPria();
+$pria = 0;
+while ($a = $data->fetch_object()) {
+  $monthNowDB = substr($a->tgl_entry,5,2);
+  if ($monthNowDB == $monthNow ) {
+      $pria++;
+  }
+}
+
+$data = $objAdmin->dataPengunjungBulanWanita();
+$wanita = 0;
+while ($a = $data->fetch_object()) {
+  $monthNowDB = substr($a->tgl_entry,5,2);
+  if ($monthNowDB == $monthNow ) {
+      $wanita++;
+  }
+}
+
+$data = $objAdmin->dataPengunjungBulanDosen();
+$dosen = 0;
+while ($a = $data->fetch_object()) {
+  $monthNowDB = substr($a->tgl_entry,5,2);
+  if ($monthNowDB == $monthNow ) {
+      $dosen++;
+  }
+}
+
+$data = $objAdmin->dataPengunjungBulanMHS();
+$mhs = 0;
+while ($a = $data->fetch_object()) {
+  $monthNowDB = substr($a->tgl_entry,5,2);
+  if ($monthNowDB == $monthNow ) {
+      $mhs++;
+  }
+}
+
+
+$data = $objAdmin->dataPengunjungHariPria();
+$no = 1;
+$a = $data->fetch_object();
+$perHariPria = $a->pria;
+
+
+$data = $objAdmin->dataPengunjungHariWanita();
+$no = 1;
+$a = $data->fetch_object();
+$perHariWanita = $a->wanita;
+
+
+$data = $objAdmin->dataPengunjungHariDosen();
+$no = 1;
+$a = $data->fetch_object();
+$perHariDosen = $a->dosen;
+
+$data = $objAdmin->dataPengunjungHariMHS();
+$no = 1;
+$a = $data->fetch_object();
+$perHariMhs = $a->mhs;
+
 ob_start();
 define('K_PATH_IMAGES', '../../assets/image/');
 
@@ -79,7 +142,8 @@ $pdf->SetX(10);
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
 
 $pdf->SetX(10);
-$pdf->writeHTMLCell(0, 0, '', '', $html2.'1</td><td>2</td><td>3'.$html5 , 0, 1, 0, true, '', true);
+$totalJekelPerHari = $perHariPria + $perHariWanita;
+$pdf->writeHTMLCell(0, 0, '', '', $html2.''.$perHariPria.'</td><td>'.$perHariWanita.'</td><td>'.$totalJekelPerHari.''.$html5 , 0, 1, 0, true, '', true);
 
 $html=<<<EOD
     <center> <h1> Pengunjung Hari Ini Per Jenis Pengunjung   </h1> </center>
@@ -96,7 +160,8 @@ $pdf->Ln(10);
 $pdf->SetX(10);
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
 $pdf->SetX(10);
-$pdf->writeHTMLCell(0, 0, '', '', $html2.'1</td><td>2</td><td>3'.$html5 , 0, 1, 0, true, '', true);
+$totalKategoriPerHari = $perHariMhs + $perHariDosen;
+$pdf->writeHTMLCell(0, 0, '', '', $html2.''.$perHariMhs.'</td><td>'.$perHariDosen.'</td><td>'.$totalKategoriPerHari.''.$html5 , 0, 1, 0, true, '', true);
 
 
 $html=<<<EOD
@@ -114,7 +179,8 @@ $pdf->Ln(10);
 $pdf->SetX(10);
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
 $pdf->SetX(10);
-$pdf->writeHTMLCell(0, 0, '', '', $html2.'5</td><td>2</td><td>7'.$html5 , 0, 1, 0, true, '', true);
+$totalJekelPerBulan = $pria + $wanita ;
+$pdf->writeHTMLCell(0, 0, '', '', $html2.''.$pria.'</td><td>'.$wanita.'</td><td>'.$totalJekelPerBulan.''.$html5 , 0, 1, 0, true, '', true);
 
 $html=<<<EOD
     <center> <h1> Pengunjung Bulan Ini Per Jenis Pengunjung   </h1> </center>
@@ -131,7 +197,8 @@ $pdf->Ln(10);
 $pdf->SetX(10);
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
 $pdf->SetX(10);
-$pdf->writeHTMLCell(0, 0, '', '', $html2.'2</td><td>5</td><td>7'.$html5 , 0, 1, 0, true, '', true);
+$totalKategoriPerBulan = $mhs + $dosen;
+$pdf->writeHTMLCell(0, 0, '', '', $html2.''.$mhs.'</td><td>'.$dosen.'</td><td>'.$totalKategoriPerBulan.''.$html5 , 0, 1, 0, true, '', true);
 
 
 // $pdf->Cell(60,0, 'Laporan dari Tanggal '.$a.' Sampai '.$b, 0, 1, 'L', 0, '', 0);
