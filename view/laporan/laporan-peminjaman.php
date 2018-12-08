@@ -55,13 +55,13 @@ $html=<<<EOD
     <center> <h1> Laporan Peminjaman </h1> </center>
     <table border="1">
       <tr align="center" style="font-weight: bold;">
-          <th>No Peminjaman</th>
-          <th>Nip</th>
+          <th width="110">No<br> Peminjaman</th>
+          <th width="90">Nip</th>
           <th>Nama Petugas</th>
           <th>Id Petugas</th>
           <th>Nama Anggota</th>
           <th>Kode Buku</th>
-          <th>Jumlah Buku</th>
+          <th>Judul Buku</th>
           <th>Tanggal Pinjam</th>
           <th>Tanggal kembali</th>
       </tr>
@@ -71,13 +71,14 @@ EOD;
 $html2=<<<EOD
   <table border="1" cellpadding="4">
       <tr>
-        <td>
+        <td width="110">
 EOD;
 $html5=<<<EOD
         </td>
       </tr>
     </table>
 EOD;
+$pdf->SetY(30);
 $pdf->SetX(10);
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
 
@@ -87,7 +88,7 @@ $no = 1;
       $pdf->SetX(10);
       $pdf->writeHTMLCell(0, 0, '', '', $html2.''.
             $data->no_pinjaman.'</td>
-            <td>'.$data->nip.'</td>
+            <td width="90">'.$data->nip.'</td>
             <td>'.$data->nama_petugas.'</td>
             <td>'.$data->id_anggota.'</td>
             <td>'.$data->nama_anggota.'</td>

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Dec 02, 2018 at 03:38 AM
+-- Generation Time: Dec 08, 2018 at 03:29 PM
 -- Server version: 10.1.37-MariaDB
 -- PHP Version: 7.2.12
 
@@ -40,7 +40,8 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id_admin`, `admin`, `passadmin`, `tgl_login`) VALUES
-(2, 'Admin', '$2y$10$Ip3fFqK.j5zDPkTXe9hzveqxVt..JyZla3jmj9pRbS8FU.woUx4jm', '0000-00-00 00:00:00');
+(2, 'Admin', '$2y$10$Ip3fFqK.j5zDPkTXe9hzveqxVt..JyZla3jmj9pRbS8FU.woUx4jm', '0000-00-00 00:00:00'),
+(3, 'admin1', '$2y$10$prc6nItamlA05tJX24712eSxan7Ck4id/pD/hFHze72eXKTbmBcLm', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -64,9 +65,16 @@ CREATE TABLE `anggota` (
 --
 
 INSERT INTO `anggota` (`id_anggota`, `nama_anggota`, `jurusan`, `jenkel`, `tmp_lahir`, `tgl_lahir`, `status`, `tgl_entry`) VALUES
+('12041020', 'Fatimah', 'Teknik Inf', 'wanita', 'Banjarmasin', '1992-06-07', 'Aktif', '2018-12-08'),
+('13021085', 'Agus Trisno', 'Manajemen ', 'pria', 'Palangkaraya', '1996-12-08', 'Aktif', '2018-12-08'),
 ('13041287', 'Rusnawan', 'Teknik Inf', 'pria', 'Banjarmasin', '1998-12-12', 'Aktif', '2018-12-02'),
+('14031022', 'Siti Zahra', 'Teknik Inf', 'pria', 'Banjarmasin', '1996-08-12', 'Aktif', '2018-12-08'),
+('14031072', 'Muhammad Ridho', 'Sistem Inf', 'pria', 'Balikpapan', '1995-08-08', 'Aktif', '2018-12-08'),
+('14031075', 'Melly', 'Sistem Inf', 'pria', 'Banjarmasin', '1995-12-04', 'Aktif', '2018-12-08'),
 ('14041011', 'Muhammad Bambang', 'Teknik Inf', 'pria', 'Banjarmasin', '1996-07-23', 'Aktif', '2018-12-02'),
-('14041084', 'Momon', 'Teknik Inf', 'pria', 'Tabalong', '1010-01-01', 'Aktif', '2018-12-02');
+('14041029', 'Muhammad Fernando', 'Komputer A', 'pria', 'Bandung', '1994-07-07', 'Aktif', '2018-12-08'),
+('14041084', 'Momon', 'Teknik Inf', 'pria', 'Tabalong', '1010-01-01', 'Aktif', '2018-12-02'),
+('14041111', 'Muhammad Syrif', 'Teknik Inf', 'pria', 'Tanjung', '1996-09-12', 'Aktif', '2018-12-08');
 
 -- --------------------------------------------------------
 
@@ -92,8 +100,16 @@ CREATE TABLE `buku` (
 --
 
 INSERT INTO `buku` (`kd_buku`, `jdl_buku`, `pengarang`, `penerbit`, `thn_terbit`, `lsbn`, `jml_buku`, `klasifikasi`, `sinopsis`, `tgl_entry`) VALUES
-(9374, 'PHP', 'Bodi ', 'PT. Muba', 2018, 'ISBN 978-602-8519-93-9', 4, 'Pembelajaran', 'PHP: Hypertext Preprocessor[4] adalah bahasa skrip yang dapat ditanamkan atau disisipkan ke dalam HTML.[5][6] PHP banyak dipakai untuk memprogram situs web dinamis. PHP dapat digunakan untuk membangun sebuah CMS. ', '2018-12-02 01:39:02'),
-(12312, 'Javascript', 'Dodi Waluyo', 'PT. Arus', 2018, 'ISBN 901-901-7821-78-3', 2, 'Pembelajaran', 'JavaScript adalah bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian besar penjelajah web populer seperti Google Chrome, Internet Explorer, Mozilla Firefox, Netscape dan Opera. Kode JavaScript dapat disisipkan dalam halaman web menggunakan tag SCRIPT.', '2018-12-02 01:30:41');
+(9374, 'PHP', 'Bodi ', 'PT. Muba', 2018, 'ISBN 978-602-8519-93-9', 3, 'Pembelajaran', 'PHP: Hypertext Preprocessor[4] adalah bahasa skrip yang dapat ditanamkan atau disisipkan ke dalam HTML.[5][6] PHP banyak dipakai untuk memprogram situs web dinamis. PHP dapat digunakan untuk membangun sebuah CMS. ', '2018-12-02 01:39:02'),
+(12312, 'Javascript', 'Dodi Waluyo', 'PT. Arus', 2018, 'ISBN 901-901-7821-78-3', 1, 'Pembelajaran', 'JavaScript adalah bahasa pemrograman tingkat tinggi dan dinamis. JavaScript populer di internet dan dapat bekerja di sebagian besar penjelajah web populer seperti Google Chrome, Internet Explorer, Mozilla Firefox, Netscape dan Opera. Kode JavaScript dapat disisipkan dalam halaman web menggunakan tag SCRIPT.', '2018-12-02 01:30:41'),
+(128404237, 'Network', 'Basuki', 'PT.Gramedia', 2017, 'ISBN 978-231-5233-23-1', 4, 'jaringan', 'belajar jaringan basic', '2018-12-08 09:22:28'),
+(438371987, 'Smart Thinks', 'Abraham', 'PT.Gramedia', 0000, 'ISBN 978-231-90754-23-2', 9, 'Membuat cara berfikir mudah', 'mudahnya cara berfikit logika', '2018-12-08 09:25:34'),
+(483726489, 'Belajar Koding', 'Syamsul', 'PT. Bekantan Jantan', 2017, 'ISBN 978-231-5233-64-2', 2, 'Belajar Koding', 'Koding itu mudah', '2018-12-08 09:23:29'),
+(483729384, 'Mahir Office', 'Subar', 'PT.Gramedia', 2012, 'ISBN 978-231-5233-23-8', 11, 'Mudahnya belajar office sampai mahir', 'Buku ini akan memberikan solusi belajar office yang baik', '2018-12-08 09:28:39'),
+(673967599, 'Installasi Windows sampai MAHIR', 'Rico', 'PT.Gramedia', 2009, 'ISBN 978-322-1333-23-2', 5, 'Installasi Windows', 'Instalkas windows dari awal sampai mahir', '2018-12-08 09:24:40'),
+(676579258, 'Sholat 5 Waktu', 'Utz. Ilmi', 'PT. Bekantan Jantan', 2013, 'ISBN 978-909-1123-23-2', 19, 'Cara Sholat yang baik', 'Mengetahui cara yang baik dan benar dalam melakukan sholat', '2018-12-08 09:26:39'),
+(898392049, 'Akupuntur', 'Dr.Zohir', 'PT.Gramedia', 2008, 'ISBN 978-231-4213-23-2', 3, 'Akupuntur sendiri', 'Mudahnya meluakukan akupuntur sendiri', '2018-12-08 09:27:37'),
+(2147483647, 'Sejarah Kancil', 'KordS', 'PT.Gramedia', 2002, 'ISBN 978-231-5233-23-2', 3, 'Novel', 'Bercerita Tentang Kancil', '2018-12-08 09:09:29');
 
 -- --------------------------------------------------------
 
@@ -166,8 +182,8 @@ CREATE TABLE `pengunjung` (
 
 INSERT INTO `pengunjung` (`id_pengunjung`, `status`, `kategori`, `nrp`, `nama`, `jurusan`, `jekel`, `tgl_entry`) VALUES
 (2, 'Aktif', '2', 2147483647, 'sudarsono', '', 'pria', '2018-12-02'),
-(3, 'Aktif', '1', 12038721, 'Anjas', 'Sistem Informasi', 'pria', '2018-12-02'),
-(4, 'Aktif', '2', 2147483647, 'Susi', '', 'wanita', '2018-12-02');
+(3, 'Aktif', '1', 12038721, 'Anjas', 'Sistem Informasi', 'pria', '2018-12-03'),
+(4, 'Aktif', '2', 2147483647, 'Susi', '', 'wanita', '2018-12-03');
 
 -- --------------------------------------------------------
 
@@ -189,8 +205,16 @@ CREATE TABLE `petugas` (
 --
 
 INSERT INTO `petugas` (`nip`, `password`, `nama_petugas`, `jabatan`, `jenkel`, `alamat`) VALUES
-(12312, '$2y$10$Y46wehCykscM0/FjzDyq2OfbopAZ9gax6R8AcbUYFt/8wB65uE5W2', 'asaas', 'asa', 'pria', 'asadasd'),
-(14041037, '$2y$10$EdHaUg99IMd06w1B40wQ9uwUY6h7lOl27J3rsHUl5Zf7ON5U3ICK2', 'Muhammad Aldi Renaldy', 'IT', 'pria', 'Jalan Mahligai');
+(12312, '$2y$10$ov.6Ti1wukmTzl9etSf8vuXwi6XL7WT83zGG5jjlYzUsDMkg3ISzC', 'Kuci', 'IT', 'pria', 'jln. Banua Hanyar'),
+(24823, '$2y$10$.sy1dOOfhkqzhI0w23h6DubzXjurXedZmNuq01nSAfa0PXnRmiXKu', 'Basuki', 'IT', 'pria', 'Jalan Mahligai'),
+(48375, '$2y$10$hCglMeuoLwUkr7DNmcXsweam7juU8Ggwl8emyI6G6BEMvfLiZdjfy', 'Johan', 'Staff Buku', 'pria', 'Jalan dharmapraja'),
+(48673, '$2y$10$vdLKOImkrhsEfQgcjyTuiezxDA0xJvzxHfQx5ba/huvXYix4x6R7O', 'Muhammad Alpha', 'Staff', 'pria', 'jalan benuaanyar'),
+(49574, '$2y$10$11zRHf63PgSUDSvFSg5kSO83hiJDOzVRCcf1ZVcJtkXzwjhOTgWbi', 'Herlambang', 'Staff', 'pria', 'Jalan pramuka'),
+(49583, '$2y$10$rOZGlot2qJ7GtpXhBlVzFudDsabl923IB2Fwgm5gvteZKsNbiksZC', 'Yahya', 'Penjaga Buku', 'pria', 'Jalan sultan adam'),
+(58573, '$2y$10$EoDVlABvDHeQA1i3U7raJeaaT3bTXlGwqvu8c3WQPXMdp6igUkfDe', 'Bambang', 'Staff Buku', 'pria', 'Jalan kayu tangi 2'),
+(78476, '$2y$10$e0JRi/3LGz78hu77pvLmGewkSxbf9iMDIIzKwf3PYhiLa6IoOmFYe', 'Rizki', 'Staff', 'pria', 'Jalan bati bati'),
+(89879, '$2y$10$Gd/P7FJo7VdXVCM2YC0iBenyAHTAclwkVnwKwaALz1HdzsGOoXhC.', 'Siska', 'Staff', 'wanita', 'Jalan mahligai'),
+(949394343, '$2y$10$64tMrzbS.JHxE4eBMCR89eAmBLHH.qKH9Kw.J3qtrjH3M8o1DSgeW', 'Cika', 'Wakil Staff', 'wanita', 'Jalan veteran');
 
 -- --------------------------------------------------------
 
@@ -215,8 +239,16 @@ CREATE TABLE `pinjaman` (
 --
 
 INSERT INTO `pinjaman` (`no_pinjaman`, `nip`, `nama_petugas`, `id_anggota`, `nama_anggota`, `kd_buku`, `jdl_buku`, `tgl_pinjam`, `tgl_kembali`) VALUES
-(3, 14041037, 'Muhammad Aldi Renaldy', 13041287, 'Rusnawan', '9374', 'PHP', '2018-12-02', '2018-12-10'),
-(4, 14041037, 'Muhammad Aldi Renaldy', 13041287, 'Rusnawan', '12312', 'Javascript', '2018-12-02', '2018-12-10');
+(3, 14041037, 'Muhammad Aldi Renaldy', 13041287, 'Rusnawan', '9374', 'PHP', '2018-12-02', '2017-12-10'),
+(4, 14041037, 'Muhammad Aldi Renaldy', 13041287, 'Rusnawan', '12312', 'Javascript', '2018-12-02', '2018-11-04'),
+(5, 12312, 'Kuci', 12041020, 'Fatimah', '438371987', 'Smart Thinks', '2018-12-08', '2018-12-16'),
+(6, 12312, 'Kuci', 12041020, 'Fatimah', '12312', 'Javascript', '2018-12-08', '2018-12-16'),
+(7, 12312, 'Kuci', 12041020, 'Fatimah', '483726489', 'Belajar Koding', '2018-12-08', '2018-12-16'),
+(8, 12312, 'Kuci', 13021085, 'Agus Trisno', '483729384', 'Mahir Office', '2018-12-08', '2018-12-16'),
+(9, 12312, 'Kuci', 13021085, 'Agus Trisno', '9374', 'PHP', '2018-12-08', '2018-12-16'),
+(10, 12312, 'Kuci', 13021085, 'Agus Trisno', '673967599', 'Installasi Windows sampai MAHIR', '2018-12-08', '2018-12-16'),
+(11, 12312, 'Kuci', 14041011, 'Muhammad Bambang', '2147483647', 'Sejarah Kancil', '2018-12-08', '2018-12-16'),
+(12, 12312, 'Kuci', 14041011, 'Muhammad Bambang', '483726489', 'Belajar Koding', '2018-12-08', '2018-12-16');
 
 --
 -- Indexes for dumped tables
@@ -284,7 +316,7 @@ ALTER TABLE `pinjaman`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id_admin` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_admin` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `detail_buku`
@@ -302,19 +334,19 @@ ALTER TABLE `klasifikasi_buku`
 -- AUTO_INCREMENT for table `pengembalian`
 --
 ALTER TABLE `pengembalian`
-  MODIFY `no_kembali` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `no_kembali` int(5) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pengunjung`
 --
 ALTER TABLE `pengunjung`
-  MODIFY `id_pengunjung` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_pengunjung` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pinjaman`
 --
 ALTER TABLE `pinjaman`
-  MODIFY `no_pinjaman` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `no_pinjaman` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

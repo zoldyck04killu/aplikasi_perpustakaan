@@ -95,7 +95,7 @@ class Admin
     $saveBuku = $db->query("INSERT INTO buku
                               (kd_buku, jdl_buku, pengarang, penerbit, thn_terbit, lsbn, jml_buku, klasifikasi, sinopsis, tgl_entry)
                               VALUES
-                              ($kdBuku, '$buku', '$pengarang', '$penerbit', '$thn_terbit', '$isbn', '$jlh_buku', '$klasifikasi', '$sinopsis', '$entry')
+                              ('$kdBuku', '$buku', '$pengarang', '$penerbit', '$thn_terbit', '$isbn', '$jlh_buku', '$klasifikasi', '$sinopsis', '$entry')
                               ")
                               or die ($db->error);
     if ($saveBuku)

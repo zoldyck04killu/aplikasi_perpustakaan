@@ -78,6 +78,7 @@ $html5=<<<EOD
       </tr>
     </table>
 EOD;
+$pdf->SetY(30);
 $pdf->SetX(10);
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, 'C', true);
 
